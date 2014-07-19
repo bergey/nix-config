@@ -19,6 +19,7 @@ pkgs :
       hsPkgs.pango
       hsPkgs.lens
       hsPkgs.textIcu
+      hsPkgs.arithmoi
     ]);
     ghc74-bare = self.haskellPackages_ghc742.ghcWithPackagesOld (hsPkgs : [ ]);
     ghc74 = self.haskellPackages_ghc742.ghcWithPackagesOld external-deps;
