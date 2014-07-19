@@ -31,12 +31,34 @@ pkgs :
     ghc78-diagrams = self.haskellPackages_ghc782.ghcWithPackagesOld diagrams-deps;
     ghcHEAD = self.haskellPackages_ghcHEAD.ghcWithPackagesOld external-deps;
 
-    pythonEnv = self.myEnvFun {
-      name = "python";
-      buildInputs = [
-        self.python3
-      ];
+    vcsTools = self.buildEnv {
+        name = "vcsTools";
+        paths = [
+            subversion
+            git
+            bazaar
+            darcs
+            mercurial
+            gitAndTools.hub
+            mr
+        ];
     };
-
+    
+    graphicsTools = buildEnv {
+	name = "graphicsTools";
+	paths = [
+            inkscape
+            gimp_2_8 # server down?
+            vlc
+        ];
+    };
+ 
+    officeTools = buildEnv {
+        name = "officeTools";
+        paths = [
+            calibre
+            libreoffice 
+        ];
+    };
 };
 }
