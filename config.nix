@@ -27,10 +27,11 @@ pkgs :
     ghc76-bare = self.haskellPackages_ghc763.ghcWithPackagesOld (hsPkgs : []);
     ghc76 = self.haskellPackages_ghc763.ghcWithPackagesOld external-deps;
     ghc76-diagrams = self.haskellPackages_ghc763.ghcWithPackagesOld diagrams-deps;
-    ghc78-bare = self.haskellPackages_ghc782.ghcWithPackagesOld (hsPkgs : [ ]);
-    ghc78 = self.haskellPackages_ghc782.ghcWithPackagesOld external-deps;
-    ghc78-diagrams = self.haskellPackages_ghc782.ghcWithPackagesOld diagrams-deps;
-    ghcHEAD = self.haskellPackages_ghcHEAD.ghcWithPackagesOld external-deps;
+    ghc78-bare = self.haskellPackages_ghc783.ghcWithPackagesOld (hsPkgs : [ ]);
+    ghc78 = self.haskellPackages_ghc783.ghcWithPackagesOld external-deps;
+    ghc78-diagrams = self.haskellPackages_ghc783.ghcWithPackagesOld diagrams-deps;
+    ghcHead = self.haskellPackages_ghcHEAD.ghcWithPackagesOld external-deps;
+    ghcHead-diagrams = self.haskellPackages_ghcHEAD.ghcWithPackagesOld diagrams-deps;
 
     vcsTools = self.buildEnv {
         name = "vcsTools";
