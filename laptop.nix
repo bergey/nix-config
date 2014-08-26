@@ -44,7 +44,7 @@
     version = 2;
 
     # Define on which hard drive you want to install Grub.
-    device = "usb-Generic-_Multi-Card_20071114173400000-0:0";
+    device = "/dev/disk/by-id/usb-Generic-_Multi-Card_20071114173400000-0:0";
   }; 
 
   networking.hostName = "wonderlust"; # Define your hostname.

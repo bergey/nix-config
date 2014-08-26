@@ -17,6 +17,8 @@
 
     # X11 apps
     xpdf
+    gv
+    ghostscript
 
     # terminal apps 
     units
@@ -85,6 +87,7 @@
     unzip
     lzma
     silver-searcher
+    sloccount
     
     # coding
     python27
