@@ -109,6 +109,5 @@
 
   # services.xserver.videoDrivers = [ "nouveau" ];
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.pulseaudio.enable = true;
 
 }

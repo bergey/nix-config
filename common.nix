@@ -33,6 +33,8 @@
   services.avahi.enable = true;
   services.avahi.nssmdns = true;
 
+  hardware.pulseaudio.enable = true;
+
   # fonts.enableFontConfig = true; # default
   fonts.fonts = with pkgs; [
     anonymousPro
