@@ -6,20 +6,28 @@ pkgs :
     external-deps = (hsPkgs: [
       hsPkgs.zlib
       hsPkgs.terminfo
+      hsPkgs.digest
+      hsPkgs.ncurses
     ]);
-    # as much as is useful for building Diagrams quickly
-    diagrams-deps = (hsPkgs: [
-      hsPkgs.zlib
-      hsPkgs.terminfo
-      hsPkgs.OpenGL
-      hsPkgs.GLFWB
+    diagrams-external = (hsPkgs: (external-deps hsPkgs) ++ [
       hsPkgs.glib
       hsPkgs.gio
       hsPkgs.gtk
       hsPkgs.pango
-      hsPkgs.lens
       hsPkgs.textIcu
       hsPkgs.arithmoi
+    ]);
+    # as much as is useful for building Diagrams quickly
+    diagrams-deps = (hsPkgs:(diagrams-external hsPkgs) ++ [
+      hsPkgs.lens
+      hsPkgs.parsec
+      hsPkgs.colour
+      hsPkgs.text
+      hsPkgs.semigroups
+      hsPkgs.optparseApplicative
+    ]);
+    hakyll-deps = (hsPkgs: [
+      hsPkgs.hakyll
     ]);
     ghc74-bare = self.haskellPackages_ghc742.ghcWithPackagesOld (hsPkgs : [ ]);
     ghc74 = self.haskellPackages_ghc742.ghcWithPackagesOld external-deps;
@@ -29,9 +37,14 @@ pkgs :
     ghc76-diagrams = self.haskellPackages_ghc763.ghcWithPackagesOld diagrams-deps;
     ghc78-bare = self.haskellPackages_ghc783.ghcWithPackagesOld (hsPkgs : [ ]);
     ghc78 = self.haskellPackages_ghc783.ghcWithPackagesOld external-deps;
+    ghc78-diagrams-ext = self.haskellPackages_ghc783.ghcWithPackagesOld diagrams-external;
     ghc78-diagrams = self.haskellPackages_ghc783.ghcWithPackagesOld diagrams-deps;
+    ghc78-hakyll = self.haskellPackages_ghc783.ghcWithPackagesOld hakyll-deps;
     ghcHead = self.haskellPackages_ghcHEAD.ghcWithPackagesOld external-deps;
     ghcHead-diagrams = self.haskellPackages_ghcHEAD.ghcWithPackagesOld diagrams-deps;
+
+    # hoogleLocal = self.haskellPackages.hoogleLocal.override {
+    #  packages = diagrams-deps
 
     vcsTools = self.buildEnv {
         name = "vcsTools";
@@ -50,7 +63,7 @@ pkgs :
 	name = "graphicsTools";
 	paths = [
             inkscape
-            gimp_2_8 # server down?
+            gimp_2_8
             vlc
         ];
     };
