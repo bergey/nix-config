@@ -17,14 +17,12 @@
 
     # X11 apps
     xpdf
-    xscreensaver
 
     # terminal apps 
     units
     ledger3
     pass
     pwgen
-    xclip
 
     # VCS
     subversion
@@ -63,6 +61,7 @@
     xlibs.xmodmap
     xlibs.xmessage
     xscreensaver
+    xclip
 
     # terminal
     screen

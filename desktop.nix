@@ -25,7 +25,7 @@
     version = 2;
 
     # Define on which hard drive you want to install Grub.
-    device = "/dev/disk/by-id/usb-Generic-_Multi-Card_20071114173400000-0:0";
+    device = "/dev/sda";
 
     extraEntries = "menuentry 'Debian GNU/Linux' --class debian --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-simple-f5b719be-4d19-4a54-92e2-1c7a454fbedd' {\n    load_video\n	insmod gzio\n	insmod part_msdos\n	insmod lvm\n	insmod ext2\n	set root='lvm/Chladni-root'\n	if [ x$feature_platform_search_hint = xy ]; then\n	  search --no-floppy --fs-uuid --set=root --hint='lvm/Chladni-root'  f5b719be-4d19-4a54-92e2-1c7a454fbedd\n	else\n	  search --no-floppy --fs-uuid --set=root f5b719be-4d19-4a54-92e2-1c7a454fbedd\n	fi\n	echo	'Loading Linux 3.10-3-amd64 ...'\n	linux	/boot/vmlinuz-3.10-3-amd64 root=/dev/mapper/Chladni-root ro  drm.debug=255 debug loglevel=8 quiet initcall_debug printk.time=y\n	echo	'Loading initial ramdisk ...'\n	initrd	/boot/initrd.img-3.10-3-amd64\n}\nmenuentry 'Windows 7 (loader) (on /dev/sdb1)' --class windows --class os $menuentry_id_option 'osprober-chain-CE56E86356E84DB1' {\n	insmod part_msdos\n	insmod ntfs\n	set root='hd1,msdos1'\n	if [ x$feature_platform_search_hint = xy ]; then\n	  search --no-floppy --fs-uuid --set=root --hint-bios=hd1,msdos1 --hint-efi=hd1,msdos1 --hint-baremetal=ahci1,msdos1 --hint='hd1,msdos1'  CE56E86356E84DB1\n	else\n	  search --no-floppy --fs-uuid --set=root CE56E86356E84DB1\n	fi\n	chainloader +1\n}";
 
