@@ -52,5 +52,6 @@
   ];
 
   services.transmission.enable = true;
+  services.transmission.settings.download-dir = "/home/Downloads";
 
 }
