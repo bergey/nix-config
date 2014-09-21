@@ -11,7 +11,7 @@
     # main apps
     emacs 
     firefox
-    chromiumWrapper
+    chromium
     notmuch
     gitAndTools.gitAnnex
 
@@ -55,6 +55,7 @@
     bitlbee
     offlineimap
     msmtp
+    foomatic_filters
 
     # X11 tools
     dmenu
@@ -76,8 +77,12 @@
     gnupg
     pinentry
 
-    # misc
+    # file viewers
     mpg321
+    vorbisTools
+    gv
+
+    # misc
     pavucontrol
     psmisc
     aspell
@@ -87,12 +92,16 @@
     unzip
     lzma
     silver-searcher
-    sloccount
+    stow
+    inotifyTools
     
     # coding
     python27
     python27Packages.ipython
     vagrant
+    haskellPackages.cabal2nix
+    sloccount
+    haskellPackages.hasktags
 
     # file systems
     davfs2
