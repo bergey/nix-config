@@ -9,11 +9,9 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     <nixos/modules/programs/virtualbox.nix>
+      ./systemPackages.nix
+      ./common.nix
     ];
-
-  nixpkgs.config.allowUnfree = true;
-  nix.gc.automatic = true;
-  nix.gc.dates = "8:00";
 
   boot.initrd.kernelModules =
     [ # Specify all kernel modules that are necessary for mounting the root
@@ -54,34 +52,6 @@
     [ { device = "/dev/Chladni/swap_1"; }
     ];
 
-  users.extraUsers.bergey = {
-    createHome = true;
-    home = "/home/bergey";
-    description = "Daniel Bergey";
-    extraGroups = [ "wheel" "audio" "video" ];
-    useDefaultShell = true;
-  };
-
-   # Select internationalisation properties.
-   i18n = {
-     consoleFont = "lat9w-16";
-     consoleKeyMap = "dvorak";
-     defaultLocale = "en_US.UTF-8";
-   };
-
-  time.timeZone = "UTC";
-
-  security.sudo.enable = true;
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  services.openssh.forwardX11 = true;
-  programs.ssh.startAgent = false;
-  services.avahi.enable = true;
-  services.avahi.nssmdns = true;
-
   services.dovecot2 = {
     enable = true;
       enablePop3 = false;
@@ -96,9 +66,9 @@
   # services.printing.enable = true;
   services.cron.mailto = "bergey@localhost";
   services.cron.systemCronJobs = [ 
-    "*/15 * * * * bergey export PATH=${pkgs.offlineimap}/bin:${pkgs.stdenv}/bin && offlineimap | /home/bergey/code/utility/add-date.sh >> /home/bergey/tmp/offlineimap-log 2>&1"
-    "*/15 * * * * bergey ${pkgs.python3}/bin/python3 /home/bergey/code/utility/sort_mail.py ${pkgs.notmuch}/bin/notmuch >> /home/bergey/tmp/sort-log 2>&1"
-    # "*/15 * * * * bergey pkill -2 -u $UID mu && sleep 1 && mu index"
+    "*/15 * * * * bergey export PATH=${pkgs.offlineimap}/bin:${pkgs.coreutils}/bin:${pkgs.gnused}/bin && offlineimap | /home/bergey/code/utility/add-date.sh >> /home/bergey/tmp/logs/offlineimap-log 2>&1"
+    "*/15 * * * * bergey ${pkgs.python3}/bin/python3 /home/bergey/code/utility/sort_mail.py ${pkgs.notmuch}/bin/notmuch >> /home/bergey/tmp/logs/sort-log 2>&1"
+ # "*/15 * * * * bergey pkill -2 -u $UID mu && sleep 1 && mu index"
     "1 1 * * * bergey export PATH=${pkgs.git}/bin:$PATH /home/bergey/code/utility/auto-git.sh"
     "1 6 * * * bergey ${pkgs.python3}/bin/python3 /home/bergey/code/original/clean/clean.py"
     ];
@@ -117,7 +87,7 @@
     enable = true;
       layout = "dvorak,us";
     xkbOptions = "grp:shifts_toggle";
-    xrandrHeads = ["DVI-D-1" "DVI-I-1" ];
+    xrandrHeads = ["DVI-D-0" "DVI-I-1" ];
 
     windowManager.xmonad.enable = true;
     windowManager.xmonad.enableContribAndExtras = true;
@@ -133,135 +103,6 @@
     '';
    };
 
-
-  # hardware.opengl.videoDrivers = [ "nvidia" ];
-  # hardware.opengl.videoDrivers = [ "nouveau" ];
   # services.xserver.videoDrivers = [ "nouveau" ];
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.pulseaudio.enable = true;
-
-  # fonts.enableFontConfig = true; # default
-  fonts.fonts = with pkgs; [
-    anonymousPro
-    cm_unicode
-    dejavu_fonts
-    freefont_ttf
-    gentium
-    inconsolata
-    libertine
-    mph_2b_damase
-    unifont
-    wqy_microhei
-    wqy_zenhei
-    eb-garamond
-  ];
-
-  services.transmission.enable = true;
-
-  nixpkgs.config.packageOverrides = pkgs: rec {
-    git-send-email = pkgs.gitAndTools.gitBase.override {
-      sendEmailSupport = true;
-  };};
-
-environment.systemPackages = with pkgs; [
-    # main apps
-    emacs 
-    # firefox
-    chromiumWrapper
-    notmuch
-    gitAndTools.gitAnnex
-
-    # X11 apps
-    calibre
-    libreoffice 
-    #kde4.okular
-    xpdf
-    vlc
-    #kicad
-    eagle
-
-    # terminal apps 
-    units
-    ledger3
-    pass
-
-    # VCS
-    subversion
-    git
-    bazaar
-    darcs
-    mercurial
-    gitAndTools.hub
-    mr
-
-    # emacs packages
-    #emacs24Packages.notmuch
-    emacs24Packages.bbdb
-    # emacs24Packages.org
-    emacs24Packages.emacsw3m
-
-    # network
-    netcat
-    nmap
-    htop
-    inetutils
-    bind
-    inetutils
-    wget
-
-    # system / daemons
-    transmission
-    bitlbee
-    offlineimap
-    msmtp
-
-    # X11 tools
-    dmenu
-    xlibs.xev
-    xlibs.xkbcomp
-    xlibs.xmodmap
-    xlibs.xmessage
-    xscreensaver
-
-    # terminal
-    screen
-    w3m 
-    vim
-    most
-    mosh
-
-    # gnupg
-    gnupg
-    pinentry
-
-    # misc
-    mpg321
-    pavucontrol
-    psmisc
-    aspell
-    aspellDicts.en
-    file
-    atool
-    unzip
-    lzma
-    silver-searcher
-    
-    # libraries
-    zlib
-
-    # coding
-    python27
-    python3
-    python27Packages.ipython
-    gcc
-    vagrant
-
-    # graphics apps
-    inkscape
-    # gimp_2_8 # server down?
-    
-
-    # file systems
-    davfs2
-];
 }

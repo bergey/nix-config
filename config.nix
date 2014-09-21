@@ -8,14 +8,20 @@ pkgs :
       hsPkgs.terminfo
       hsPkgs.digest
       hsPkgs.ncurses
+      hsPkgs.regexPosix
+      hsPkgs.utf8String
     ]);
     diagrams-external = (hsPkgs: (external-deps hsPkgs) ++ [
-      hsPkgs.glib
-      hsPkgs.gio
-      hsPkgs.gtk
-      hsPkgs.pango
-      hsPkgs.textIcu
       hsPkgs.arithmoi
+      hsPkgs.cairo
+      hsPkgs.directory
+      hsPkgs.gio
+      hsPkgs.glib
+      hsPkgs.gtk
+      hsPkgs.hinotify
+      hsPkgs.pango
+      hsPkgs.primitive
+      hsPkgs.textIcu
     ]);
     # as much as is useful for building Diagrams quickly
     diagrams-deps = (hsPkgs:(diagrams-external hsPkgs) ++ [
@@ -31,6 +37,7 @@ pkgs :
     ]);
     ghc74-bare = self.haskellPackages_ghc742.ghcWithPackagesOld (hsPkgs : [ ]);
     ghc74 = self.haskellPackages_ghc742.ghcWithPackagesOld external-deps;
+    ghc74-diagrams-ext = self.haskellPackages_ghc742.ghcWithPackagesOld diagrams-external;
     ghc74-diagrams = self.haskellPackages_ghc742.ghcWithPackagesOld diagrams-deps;
     ghc76-bare = self.haskellPackages_ghc763.ghcWithPackagesOld (hsPkgs : []);
     ghc76 = self.haskellPackages_ghc763.ghcWithPackagesOld external-deps;
