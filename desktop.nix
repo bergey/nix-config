@@ -63,7 +63,11 @@
   };
 
   # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = [pkgs.foomatic_filters];
+  };
+
   services.cron.mailto = "bergey@localhost";
   services.cron.systemCronJobs = [ 
     "*/15 * * * * bergey export PATH=${pkgs.offlineimap}/bin:${pkgs.coreutils}/bin:${pkgs.gnused}/bin && offlineimap | /home/bergey/code/utility/add-date.sh >> /home/bergey/tmp/logs/offlineimap-log 2>&1"
