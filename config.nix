@@ -7,14 +7,14 @@ pkgs :
       hsPkgs.zlib
       hsPkgs.terminfo
       hsPkgs.digest
-      hsPkgs.ncurses
+      # hsPkgs.ncurses
       hsPkgs.regexPosix
       hsPkgs.utf8String
     ]);
     diagrams-external = (hsPkgs: (external-deps hsPkgs) ++ [
       hsPkgs.arithmoi
       hsPkgs.cairo
-      hsPkgs.directory
+      # hsPkgs.directory
       hsPkgs.gio
       hsPkgs.glib
       hsPkgs.gtk
@@ -22,6 +22,16 @@ pkgs :
       hsPkgs.pango
       hsPkgs.primitive
       hsPkgs.textIcu
+    ]);
+    # Haskell packages needed for diagrams-doc which have non-Haskell dependencies
+    diagrams-doc = hs: (diagrams-external hs ++ [
+      hs.unixCompat
+      hs.liftedBase
+      hs.hsBibutils
+      hs.bytestringMmap
+      hs.highlightingKate
+      hs.network
+      # hs.pandoc
     ]);
     # as much as is useful for building Diagrams quickly
     diagrams-deps = (hsPkgs:(diagrams-external hsPkgs) ++ [
@@ -46,6 +56,7 @@ pkgs :
     ghc78 = self.haskellPackages_ghc783.ghcWithPackagesOld external-deps;
     ghc78-diagrams-ext = self.haskellPackages_ghc783.ghcWithPackagesOld diagrams-external;
     ghc78-diagrams = self.haskellPackages_ghc783.ghcWithPackagesOld diagrams-deps;
+    ghc78-diagrams-doc = self.haskellPackages_ghc783.ghcWithPackagesOld diagrams-doc;
     ghc78-hakyll = self.haskellPackages_ghc783.ghcWithPackagesOld hakyll-deps;
     ghcHead = self.haskellPackages_ghcHEAD.ghcWithPackagesOld external-deps;
     ghcHead-diagrams = self.haskellPackages_ghcHEAD.ghcWithPackagesOld diagrams-deps;
