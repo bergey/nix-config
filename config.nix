@@ -61,9 +61,6 @@ pkgs :
     ghcHead = self.haskellPackages_ghcHEAD.ghcWithPackagesOld external-deps;
     ghcHead-diagrams = self.haskellPackages_ghcHEAD.ghcWithPackagesOld diagrams-deps;
 
-    # hoogleLocal = self.haskellPackages.hoogleLocal.override {
-    #  packages = diagrams-deps
-
     vcsTools = self.buildEnv {
         name = "vcsTools";
         paths = [
@@ -92,6 +89,14 @@ pkgs :
             calibre
             libreoffice 
         ];
+    };
+
+    rToolsEnv = buildEnv {
+      name = "rTools";
+      paths = with rPackages; [
+        devtools
+        ggplot2
+      ];
     };
 };
 }
