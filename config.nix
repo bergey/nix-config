@@ -96,7 +96,72 @@ pkgs :
       paths = with rPackages; [
         devtools
         ggplot2
+        R
       ];
     };
+
+    photoTools = buildEnv {
+      name = "photoTools";
+      paths = [
+        gphoto2
+        darktable
+        gimp
+        imagemagick
+        perlPackages.ImageExifTool
+      ];
+    };
+
+    cadTools = buildEnv {
+      name = "cadTools";
+      paths = [
+        meshlab
+        slic3r
+        openscad
+      ];
+    };
+
+    webBrowsers = buildEnv {
+      name = "webBrowsers";
+      paths = [
+        firefox-bin
+        chromium
+        elinks
+        # for comparison
+        # uzbl
+        # dwb
+        # netsurf
+      ];
 };
+
+      docTools = buildEnv {
+        name = "docTools";
+        paths = [
+          calibre
+          libreoffice
+          haskellPackages.pandoc
+          # texLiveFull
+          zathura
+        ];
+      };
+
+      avTools = buildEnv {
+        name = "avTools";
+        paths = [
+          abcde
+          id3v2
+          vlc
+        ];
+      };
+
+      vmTools = buildEnv {
+        name = "vmTools";
+        paths = [
+          vagrant
+          linuxPackages.virtualbox
+        ];
+      };
+
+    immHg = self.haskellPackages.callPackage /home/bergey/code/contributing/imm {};
+    imm = self.haskellPackages.callPackage /home/bergey/records/dotfiles/imm/.config/imm {imm = immHg;};
+    };
 }
