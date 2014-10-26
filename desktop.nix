@@ -109,4 +109,8 @@
 
   # services.xserver.videoDrivers = [ "nouveau" ];
   services.xserver.videoDrivers = [ "nvidia" ];
+
+  environment.systemPackages = with pkgs; [
+    postgresql93
+  ];
 }
