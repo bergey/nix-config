@@ -10,15 +10,12 @@
   environment.systemPackages = with pkgs; [
     # main apps
     emacs 
-    firefox
-    chromium
+    # firefox
+    # chromium
     notmuch
     gitAndTools.gitAnnex
 
     # X11 apps
-    xpdf
-    gv
-    ghostscript
 
     # terminal apps 
     units
@@ -49,6 +46,7 @@
     bind
     inetutils
     wget
+    cadaver
 
     # system / daemons
     transmission
@@ -72,6 +70,7 @@
     vim
     most
     mosh
+    silver-searcher
 
     # gnupg
     gnupg
@@ -80,7 +79,6 @@
     # file viewers
     mpg321
     vorbisTools
-    gv
 
     # misc
     pavucontrol
@@ -91,21 +89,19 @@
     atool
     unzip
     lzma
-    silver-searcher
     stow
     inotifyTools
     
     # coding
     python27
     python27Packages.ipython
-    vagrant
     haskellPackages.cabal2nix
     sloccount
     haskellPackages.hasktags
 
     # file systems
     davfs2
-
+    bindfs
     
   ];
 }
