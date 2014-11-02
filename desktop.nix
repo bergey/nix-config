@@ -103,6 +103,7 @@
       xmodmap ~/.Xmodmap
       xscreensaver -no-splash &
       emacs &
+      ~/code/utility/logitech
       ~/code/build/noip-2.1.9-1/noip2
     '';
    };
