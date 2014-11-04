@@ -1,5 +1,5 @@
-pkgs : 
-{ 
+pkgs :
+{
   allowUnfree = true;
   packageOverrides = self: with self; rec {
     # common haskell packages with external dependencies
@@ -73,7 +73,7 @@ pkgs :
             mr
         ];
     };
-    
+
     graphicsTools = buildEnv {
 	name = "graphicsTools";
 	paths = [
@@ -82,12 +82,12 @@ pkgs :
             vlc
         ];
     };
- 
+
     officeTools = buildEnv {
         name = "officeTools";
         paths = [
             calibre
-            libreoffice 
+            libreoffice
         ];
     };
 
