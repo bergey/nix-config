@@ -161,6 +161,36 @@ pkgs :
         ];
       };
 
+      pythonTools = buildEnv {
+        name = "pythonTools";
+        paths = with python27Packages; [
+          pandas
+          ipython
+          matplotlib
+          scipy
+        ];
+      };
+
+      pythonEnv = myEnvFun {
+        name = "python";
+        buildInputs = with python27Packages; [
+          ipython
+          pandas
+          matplotlib
+          # scipy
+        ];
+      };
+
+    jsTools = buildEnv {
+      name = "jsTools";
+      paths = [
+        nodePackages.grunt-cli
+        nodePackages.jshint
+        nodejs
+        rubyLibs.sass
+      ];
+    };
+
     immHg = self.haskellPackages.callPackage /home/bergey/code/contributing/imm {};
     imm = self.haskellPackages.callPackage /home/bergey/records/dotfiles/imm/.config/imm {imm = immHg;};
     };
