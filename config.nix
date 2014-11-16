@@ -181,14 +181,15 @@ pkgs :
         ];
       };
 
-    jsTools = buildEnv {
-      name = "jsTools";
-      paths = [
-        nodePackages.grunt-cli
-        nodePackages.jshint
-        nodejs
-        rubyLibs.sass
-      ];
+      jsTools = myEnvFun {
+        name = "js";
+        buildInputs = [
+              nodePackages.browserify
+              nodePackages.jshint
+              nodePackages.gulp
+              nodejs
+              rubyLibs.sass
+        ];
     };
 
     immHg = self.haskellPackages.callPackage /home/bergey/code/contributing/imm {};
