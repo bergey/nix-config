@@ -2,64 +2,41 @@ pkgs :
 {
   allowUnfree = true;
   packageOverrides = self: with self; rec {
-    # common haskell packages with external dependencies
-    external-deps = (hsPkgs: [
-      hsPkgs.zlib
-      hsPkgs.terminfo
-      hsPkgs.digest
-      # hsPkgs.ncurses
-      hsPkgs.regexPosix
-      hsPkgs.utf8String
-    ]);
-    diagrams-external = (hsPkgs: (external-deps hsPkgs) ++ [
-      hsPkgs.arithmoi
-      hsPkgs.cairo
-      # hsPkgs.directory
-      hsPkgs.gio
-      hsPkgs.glib
-      hsPkgs.gtk
-      hsPkgs.hinotify
-      hsPkgs.pango
-      hsPkgs.primitive
-      hsPkgs.textIcu
-    ]);
-    # Haskell packages needed for diagrams-doc which have non-Haskell dependencies
-    diagrams-doc = hs: (diagrams-external hs ++ [
-      hs.unixCompat
-      hs.liftedBase
-      hs.hsBibutils
-      hs.bytestringMmap
-      hs.highlightingKate
-      hs.network
-      # hs.pandoc
-    ]);
-    # as much as is useful for building Diagrams quickly
-    diagrams-deps = (hsPkgs:(diagrams-external hsPkgs) ++ [
-      hsPkgs.lens
-      hsPkgs.parsec
-      hsPkgs.colour
-      hsPkgs.text
-      hsPkgs.semigroups
-      hsPkgs.optparseApplicative
-    ]);
-    hakyll-deps = (hsPkgs: [
-      hsPkgs.hakyll
-    ]);
-    ghc74-bare = self.haskellPackages_ghc742.ghcWithPackagesOld (hsPkgs : [ ]);
-    ghc74 = self.haskellPackages_ghc742.ghcWithPackagesOld external-deps;
-    ghc74-diagrams-ext = self.haskellPackages_ghc742.ghcWithPackagesOld diagrams-external;
-    ghc74-diagrams = self.haskellPackages_ghc742.ghcWithPackagesOld diagrams-deps;
-    ghc76-bare = self.haskellPackages_ghc763.ghcWithPackagesOld (hsPkgs : []);
-    ghc76 = self.haskellPackages_ghc763.ghcWithPackagesOld external-deps;
-    ghc76-diagrams = self.haskellPackages_ghc763.ghcWithPackagesOld diagrams-deps;
-    ghc78-bare = self.haskellPackages_ghc783.ghcWithPackagesOld (hsPkgs : [ ]);
-    ghc78 = self.haskellPackages_ghc783.ghcWithPackagesOld external-deps;
-    ghc78-diagrams-ext = self.haskellPackages_ghc783.ghcWithPackagesOld diagrams-external;
-    ghc78-diagrams = self.haskellPackages_ghc783.ghcWithPackagesOld diagrams-deps;
-    ghc78-diagrams-doc = self.haskellPackages_ghc783.ghcWithPackagesOld diagrams-doc;
-    ghc78-hakyll = self.haskellPackages_ghc783.ghcWithPackagesOld hakyll-deps;
-    ghcHead = self.haskellPackages_ghcHEAD.ghcWithPackagesOld external-deps;
-    ghcHead-diagrams = self.haskellPackages_ghcHEAD.ghcWithPackagesOld diagrams-deps;
+
+    haskellTools = spec: ([
+        spec.ghc
+        sloccount
+    ] ++ (with spec.hsPkgs; [
+        hlint
+        cabalInstall
+    ]) ++ (with haskellPackages_ghc783; [
+        cabal2nix
+        hasktags
+        # threadscope # broken 2014-11-19
+    ]));
+
+    ghcEnv = spec: myEnvFun {
+        name = spec.name;
+        buildInputs = haskellTools spec ++ myHaskellPackages spec;
+    };
+
+    ghcEnv_g42 = ghcEnv {
+        name = "ghc742";
+        ghc = ghc.ghc742;
+        hsPkgs = haskellPackages_ghc742;
+    };
+
+    ghcEnv_763 = ghcEnv {
+        name = "ghc763";
+        ghc = ghc.ghc763;
+        hsPkgs = haskellPackages_ghc763;
+    };
+
+    ghcEnv_783 = ghcEnv {
+        name = "ghc783";
+        ghc = ghc.ghc783;
+        hsPkgs = haskellPackages_ghc783;
+    };
 
     vcsTools = self.buildEnv {
         name = "vcsTools";
@@ -181,7 +158,7 @@ pkgs :
         ];
       };
 
-      jsTools = myEnvFun {
+      jsEnv = myEnvFun {
         name = "js";
         buildInputs = [
               nodePackages.browserify
@@ -192,7 +169,110 @@ pkgs :
         ];
     };
 
-    immHg = self.haskellPackages.callPackage /home/bergey/code/contributing/imm {};
-    imm = self.haskellPackages.callPackage /home/bergey/records/dotfiles/imm/.config/imm {imm = immHg;};
+    # rarely used
+    androidEnv = myEnvFun {
+      name = "android";
+      buildInputs = [
+          davfs
+          wdfs-fuse
+          androidsdk
+      ];
+    };
+
+
+    arduinoEnv = myEnvFun {
+        name = "arduino";
+        buildInputs = [
+            arduino_core
+            avrgcclibc
+            avrdude
+            ino
+            stdenv
+        ];
+    };
+
+    scalaEnv = myEnvFun {
+        name = "scala";
+        buildInputs = [
+            sbt
+            scala
+        ];
+    };
+
+    clojureEnv = myEnvFun {
+        name = "clojure";
+        buildInputs = [
+            leiningen
+        ];
+    };
+
+    rustEnv = myEnvFun {
+        name = "rust";
+        buildInputs = [
+            rust
+        ];
+    };
+
+    # this is very long!
+    myHaskellPackages = spec: with spec.hsPkgs; [
+        HUnit
+        aeson
+        attoparsec
+        cassava
+        cereal
+        colour
+        conduit
+        dataDefault
+        diagramsCairo
+        diagramsContrib
+        diagramsLib
+        digest
+        glib
+        gtk
+        # hakyll # broken 2014-11-19
+        highlightingKate
+        hinotify
+        hsBibutils
+        hslogger
+        hspec
+        # ncurses # broken 2014-11-19
+        network
+        optparseApplicative
+        pandoc
+        pango
+        parsec
+        primitive
+        random
+        regexPosix
+        semigroups
+        shelly
+        tasty
+        terminfo
+        testFramework
+        text
+        textIcu
+        transformers
+        unixCompat
+        unorderedContainers
+        utf8String
+        zlib
+        cairo
+    ]
+
+    ++ stdenv.lib.optionals
+        (stdenv.lib.versionOlder "7.7" spec.ghc.version)
+        # Packages that only work in 7.8+
+        [   units
+            criterion
+        ]
+
+    ++ stdenv.lib.optionals
+        (stdenv.lib.versionOlder "7.5" spec.ghc.version)
+        # Packages that only work in 7.6+
+        [
+            linear
+            lens
+        ];
+
     };
 }
