@@ -138,24 +138,19 @@ pkgs :
         ];
       };
 
-      pythonTools = buildEnv {
-        name = "pythonTools";
-        paths = with python27Packages; [
-          pandas
-          ipython
-          matplotlib
-          scipy
-        ];
-      };
-
       pythonEnv = myEnvFun {
         name = "python";
         buildInputs = with python27Packages; [
-          ipython
-          pandas
-          matplotlib
-          # scipy
-        ];
+            git
+            stdenv
+            zlib
+            python27Full
+            ipython
+            pandas
+            matplotlib
+            scipy
+            tkinter
+            ];
       };
 
       jsEnv = myEnvFun {
