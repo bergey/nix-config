@@ -159,6 +159,8 @@ pkgs :
               nodePackages.browserify
               nodePackages.jshint
               nodePackages.gulp
+              nodePackages.grunt-cli
+              nodePackages.mocha
               nodejs
               rubyLibs.sass
         ];
