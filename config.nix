@@ -153,10 +153,12 @@ pkgs :
             ];
       };
 
-      jsEnv = myEnvFun {
+      # jsEnv = myEnvFun {
+      jsTools = buildEnv {
         name = "js";
-        buildInputs = [
-              nodePackages.browserify
+        # buildInputs = [
+        paths = [
+              # nodePackages.browserify
               nodePackages.jshint
               nodePackages.gulp
               nodePackages.grunt-cli
