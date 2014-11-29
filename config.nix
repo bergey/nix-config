@@ -138,9 +138,18 @@ pkgs :
         ];
       };
 
+      docutilsEnv = myEnvFun {
+          name = "docutils";
+          buildInputs = with python33Packages; [
+              haskellPackages.pandoc
+              ipython
+              docutils
+              pygments
+          ];
+      };
       pythonEnv = myEnvFun {
         name = "python";
-        buildInputs = with python27Packages; [
+        buildInputs = with python33Packages; [
             git
             stdenv
             zlib
