@@ -1,6 +1,7 @@
 pkgs :
 {
   allowUnfree = true;
+  allowBroken = true;
   packageOverrides = self: with self; rec {
 
     haskellTools = spec: ([
@@ -20,7 +21,7 @@ pkgs :
         buildInputs = haskellTools spec ++ myHaskellPackages spec;
     };
 
-    ghcEnv_g42 = ghcEnv {
+    ghcEnv_742 = ghcEnv {
         name = "ghc742";
         ghc = ghc.ghc742;
         hsPkgs = haskellPackages_ghc742;
@@ -32,11 +33,13 @@ pkgs :
         hsPkgs = haskellPackages_ghc763;
     };
 
-    ghcEnv_783 = ghcEnv {
+    ghcSpec_783 = {
         name = "ghc783";
         ghc = ghc.ghc783;
         hsPkgs = haskellPackages_ghc783;
     };
+
+    ghcEnv_783 = ghcEnv ghcSpec_783;
 
     vcsTools = self.buildEnv {
         name = "vcsTools";
@@ -281,6 +284,12 @@ pkgs :
             linear
             lens
         ];
+
+    myHoogleLocal = spec: spec.hsPkgs.hoogleLocal.override {
+        packages = myHaskellPackages spec;
+    };
+
+    hoogleLocal_783 = myHoogleLocal ghcSpec_783;
 
     };
 }
