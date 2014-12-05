@@ -241,8 +241,10 @@ pkgs :
         glib
         gtk
         # hakyll # broken 2014-11-19
+        haskellSrcExts
         highlightingKate
         hinotify
+        hint
         hsBibutils
         hslogger
         hspec
