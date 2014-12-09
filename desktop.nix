@@ -111,7 +111,15 @@
   # services.xserver.videoDrivers = [ "nouveau" ];
   services.xserver.videoDrivers = [ "nvidia" ];
 
-  environment.systemPackages = with pkgs; [
-    postgresql93
-  ];
+  services.postgresql = {
+    enable = true;
+    package = pkgs.postgresql93;
+    authentication = pkgs.lib.mkForce ''
+      # Generated file; do not edit!
+      local all yesodTutorial md5
+      local all all ident
+      host all all 127.0.0.1/32 md5
+      host all all ::1/128 md5
+    '';
+  };
 }
