@@ -73,7 +73,7 @@
     "*/15 * * * * bergey export PATH=${pkgs.offlineimap}/bin:${pkgs.coreutils}/bin:${pkgs.gnused}/bin && offlineimap | /home/bergey/code/utility/add-date.sh >> /home/bergey/tmp/logs/offlineimap-log 2>&1"
     "*/15 * * * * bergey ${pkgs.python3}/bin/python3 /home/bergey/code/utility/sort_mail.py ${pkgs.notmuch}/bin/notmuch >> /home/bergey/tmp/logs/sort-log 2>&1"
  # "*/15 * * * * bergey pkill -2 -u $UID mu && sleep 1 && mu index"
-    "1 1 * * * bergey export PATH=${pkgs.git}/bin:$PATH /home/bergey/code/utility/auto-git.sh"
+    "1 1 * * * bergey export PATH=${pkgs.git}/bin:$PATH && /home/bergey/code/utility/auto-git.sh >> /home/bergey/tmp/logs/git-log 2>&1"
     "1 6 * * * bergey ${pkgs.python3}/bin/python3 /home/bergey/code/original/clean/clean.py"
     ];
   services.cron.enable = true;
