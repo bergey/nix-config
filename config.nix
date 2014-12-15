@@ -41,6 +41,11 @@ pkgs :
 
     ghcEnv_783 = ghcEnv ghcSpec_783;
 
+    ghcEnvBare = myEnvFun {
+      name = "ghc78-bare";
+      buildInputs = [ ghc.ghc783 haskellPackages_ghc783.cabalInstall ];
+    };
+
     vcsTools = self.buildEnv {
         name = "vcsTools";
         paths = [
