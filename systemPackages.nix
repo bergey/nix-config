@@ -37,6 +37,7 @@
     emacs24Packages.bbdb
     emacs24Packages.org
     emacs24Packages.emacsw3m
+    emacs24Packages.proofgeneral
 
     # network
     netcat
