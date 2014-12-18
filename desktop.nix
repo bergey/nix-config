@@ -8,7 +8,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-    <nixos/modules/programs/virtualbox.nix>
       ./systemPackages.nix
       ./common.nix
     ];
@@ -80,6 +79,8 @@
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ATTR{idVendor}=="1781", ATTR{idProduct}=="0c9f", GROUP="dialout", MODE="0666"
   '';
+
+  services.virtualboxHost.enable = true;
 
   networking.firewall.extraCommands = 
     "iptables -I nixos-fw 2 -p tcp -m tcp --dport 993 -j nixos-fw-accept
