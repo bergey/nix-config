@@ -219,6 +219,7 @@ pkgs :
         name = "clojure";
         buildInputs = [
             leiningen
+            clojure
         ];
     };
 
