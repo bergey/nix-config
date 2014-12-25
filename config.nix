@@ -239,6 +239,7 @@ pkgs :
         cereal
         colour
         conduit
+        csv-conduit
         dataDefault
         diagramsCairo
         diagramsContrib
