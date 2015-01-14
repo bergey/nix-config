@@ -10,7 +10,7 @@ pkgs :
     ] ++ (with spec.hsPkgs; [
         hlint
         cabalInstall
-    ]) ++ (with haskellPackages_ghc783; [
+    ]) ++ (with haskellPackages_ghc784; [
         cabal2nix
         hasktags
         # threadscope # broken 2014-11-19
@@ -33,17 +33,17 @@ pkgs :
         hsPkgs = haskellPackages_ghc763;
     };
 
-    ghcSpec_783 = {
-        name = "ghc783";
-        ghc = ghc.ghc783;
-        hsPkgs = haskellPackages_ghc783;
+    ghcSpec_784 = {
+        name = "ghc784";
+        ghc = ghc.ghc784;
+        hsPkgs = haskellPackages_ghc784;
     };
 
-    ghcEnv_783 = ghcEnv ghcSpec_783;
+    ghcEnv_784 = ghcEnv ghcSpec_784;
 
     ghcEnvBare = myEnvFun {
       name = "ghc78-bare";
-      buildInputs = [ ghc.ghc783 haskellPackages_ghc783.cabalInstall ];
+      buildInputs = [ ghc.ghc784 haskellPackages_ghc784.cabalInstall ];
     };
 
     vcsTools = self.buildEnv {
@@ -299,7 +299,7 @@ pkgs :
         packages = myHaskellPackages spec;
     };
 
-    hoogleLocal_783 = myHoogleLocal ghcSpec_783;
+    hoogleLocal_784 = myHoogleLocal ghcSpec_784;
 
     };
 }
