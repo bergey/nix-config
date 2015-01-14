@@ -148,7 +148,7 @@ pkgs :
 
       docutilsEnv = myEnvFun {
           name = "docutils";
-          ps1 = "[\\$NIX_MYENV_NAME] \\t \\# \\h \\\\\\$? $ ";
+          # ps1 = "[\\$NIX_MYENV_NAME] \\t \\# \\h \\\\\\$? $ ";
           buildInputs = with python33Packages; [
               haskellPackages.pandoc
               ipython
@@ -158,7 +158,7 @@ pkgs :
       };
       pythonEnv = myEnvFun {
         name = "python";
-        ps1 = "[\\$NIX_MYENV_NAME] \\t \\# \\h \\\\\\$? $ ";
+        # ps1 = "[\\$NIX_MYENV_NAME] \\t \\# \\h \\\\\\$? $ ";
         buildInputs = with python33Packages; [
             git
             stdenv
