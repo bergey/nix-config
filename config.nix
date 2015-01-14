@@ -122,10 +122,19 @@ pkgs :
         name = "docTools";
         paths = [
           calibre
-          libreoffice
+          # libreoffice
           haskellPackages.pandoc
+          haskellPackages.pandocCiteproc
           # texLiveFull
           zathura
+        ];
+      };
+
+      Pandoc = buildEnv {
+        name = "Pandoc";
+        paths = [
+          haskellPackages.pandoc
+          haskellPackages.pandocCiteproc
         ];
       };
 
@@ -167,7 +176,9 @@ pkgs :
             pandas
             matplotlib
             scipy
-            tkinter
+            # tkinter
+            notmuch
+            self.notmuch
             ];
       };
 
