@@ -184,7 +184,7 @@ pkgs :
 
       # jsEnv = myEnvFun {
       jsTools = buildEnv {
-        name = "js";
+        name = "jsTools";
         # buildInputs = [
         paths = [
               # nodePackages.browserify
