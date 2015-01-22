@@ -37,6 +37,9 @@ function cabalc {
 alias nsh='nix-shell --pure'
 alias nixc='eval "$configurePhase"'
 alias nixb='eval "$buildPhase"'
+alias setupm='ghc --make Setup'
+alias setupc='./Setup configure'
+alias setupb='./Setup build'
 
 # make .nix files for local haskell packages
 # presumably some of this will be superceded by the most recent
@@ -44,21 +47,18 @@ alias nixb='eval "$buildPhase"'
 
 # cabal2nix for local packages
 function cabal2nix-local { 
-    cabal2nix ./. > default.nix
+    cabal2nix . > default.nix
     cat - > shell.nix <<EOF
-{ pkgs ? import <nixpkgs> {}, haskellPackages ? pkgs.haskellPackages }:
+{ pkgs ? import <nixpkgs> {}, haskellPackages ? pkgs.haskellngPackages }:
 
 let 
   hs = haskellPackages.override {
-        extension = self: super: rec {
+        overrides = self: super: rec {
           hsPkg = pkg: version: self.callPackage "/home/bergey/code/nixHaskellVersioned/\${pkg}/\${version}.nix" {};
           thisPackage = self.callPackage ./. {};
       };
     };
-  in
-      pkgs.lib.overrideDerivation hs.thisPackage (attrs: {
-       buildInputs = [hs.cabalInstall ] ++ attrs.buildInputs;
- })
+  in hs.thisPackage.env
 EOF
 }
 
