@@ -108,7 +108,7 @@ pkgs :
     webBrowsers = buildEnv {
       name = "webBrowsers";
       paths = [
-        firefox-bin
+        # firefox-bin
         chromium
         elinks
         # for comparison
