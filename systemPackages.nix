@@ -38,6 +38,7 @@
     emacs24Packages.org
     emacs24Packages.emacsw3m
     emacs24Packages.proofgeneral
+    emacs24Packages.emms  # link various tools correctly
 
     # network
     netcat
