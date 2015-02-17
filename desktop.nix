@@ -82,6 +82,7 @@
   '';
 
   services.virtualboxHost.enable = true;
+  users.extraGroups.vboxusers.members = [ "bergey" ];
 
   networking.firewall.extraCommands = 
     "iptables -I nixos-fw 2 -p tcp -m tcp --dport 993 -j nixos-fw-accept
