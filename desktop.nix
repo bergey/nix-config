@@ -26,7 +26,7 @@
     # Define on which hard drive you want to install Grub.
     device = "/dev/sda";
 
-    extraEntries = "menuentry 'Kubuntu Installer' {\n        set isofile="/home/bergey/tmpkubuntu-14.10-desktop-amd64.iso"\n        # if you use a single partition for your $HOME\n        loopback loop (hd0,5)$isofile\n        linux (loop)/casper/vmlinuz.efi boot=casper iso-scan/filename=$isofile noprompt noeject\n        initrd (loop)/casper/initrd.lz\n}\nmenuentry 'Windows 7 (loader) (on /dev/sdb1)' --class windows --class os $menuentry_id_option 'osprober-chain-CE56E86356E84DB1' {\n	insmod part_msdos\n	insmod ntfs\n	set root='hd1,msdos1'\n	if [ x$feature_platform_search_hint = xy ]; then\n	  search --no-floppy --fs-uuid --set=root --hint-bios=hd1,msdos1 --hint-efi=hd1,msdos1 --hint-baremetal=ahci1,msdos1 --hint='hd1,msdos1'  CE56E86356E84DB1\n	else\n	  search --no-floppy --fs-uuid --set=root CE56E86356E84DB1\n	fi\n	chainloader +1\n}";
+    extraEntries = "menuentry 'Windows 7 (loader) (on /dev/sdb1)' --class windows --class os $menuentry_id_option 'osprober-chain-CE56E86356E84DB1' {\n	insmod part_msdos\n	insmod ntfs\n	set root='hd1,msdos1'\n	if [ x$feature_platform_search_hint = xy ]; then\n	  search --no-floppy --fs-uuid --set=root --hint-bios=hd1,msdos1 --hint-efi=hd1,msdos1 --hint-baremetal=ahci1,msdos1 --hint='hd1,msdos1'  CE56E86356E84DB1\n	else\n	  search --no-floppy --fs-uuid --set=root CE56E86356E84DB1\n	fi\n	chainloader +1\n}";
 #    extraEntriesBeforeNixOS = true;
 };
 
