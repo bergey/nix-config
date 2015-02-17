@@ -27,13 +27,23 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  services.openssh.forwardX11 = true;
+  services.openssh = {
+    enable = true;
+    forwardX11 = true;
+    permitRootLogin = "no";
+    passwordAuthentication = false;
+    challengeResponseAuthentication = false;
+    extraConfig = "AllowUsers bergey\nProtocol 2\n";
+  };
   programs.ssh.startAgent = false;
+
   services.avahi.enable = true;
   services.avahi.nssmdns = true;
 
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio = {
+    enable = true;
+    configFile = /etc/nixos/etc/pulse/default.pa;
+  };
 
   # fonts.enableFontConfig = true; # default
   fonts.fonts = with pkgs; [
