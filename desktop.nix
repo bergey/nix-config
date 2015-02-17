@@ -73,6 +73,7 @@
  # "*/15 * * * * bergey pkill -2 -u $UID mu && sleep 1 && mu index"
     "1 1 * * * bergey export PATH=${pkgs.git}/bin:$PATH && /home/bergey/code/utility/auto-git.sh >> /home/bergey/tmp/logs/git-log 2>&1"
     "1 6 * * * bergey ${pkgs.python3}/bin/python3 /home/bergey/code/original/clean/clean.py"
+    "23 12 * * * bergey imm -u >> /home/bergey/tmp/logs/imm-log 2>&1"
     ];
   services.cron.enable = true;
 
