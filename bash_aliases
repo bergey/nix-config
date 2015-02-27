@@ -39,6 +39,7 @@ alias nixc='eval "$configurePhase"'
 alias nixb='eval "$buildPhase"'
 alias setupm='ghc --make Setup'
 alias setupc='./Setup configure --enable-tests'
+alias setupw="./Setup configure --enable-tests --ghc-options='-Wall -Werror'"
 alias setupb='./Setup build'
 
 # make .nix files for local haskell packages
