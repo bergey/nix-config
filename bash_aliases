@@ -63,7 +63,11 @@ let
           thisPackage = self.callPackage ./. {};
       };
     };
-  in hs.thisPackage.env
+  in (hs.thisPackage.override (args: args // {
+    mkDerivation = expr: args.mkDerivation (expr // {
+      buildTools = [  hs.cabal-install ];
+    });
+  })).env
 EOF
 }
 
