@@ -102,5 +102,15 @@
       xscreensaver -no-splash &
       emacs &
     '';
+
+    synaptics = {
+      enable = true;
+      minSpeed = "0.1";
+      maxSpeed = "1.0";
+      accelFactor = "0.05";
+      additionalOptions = ''
+        Option "MaxTapTime" "100"
+      '';
+    };
    };
 }
