@@ -5,6 +5,8 @@
 { config, pkgs, ... }:
 
 {
+  nix.buildCores = 0;
+
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -49,6 +51,11 @@
   swapDevices =
     [ { device = "/dev/Chladni/swap_1"; }
     ];
+
+  nix.sshServe = {
+    enable = true;
+    keys = [ "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCtnRP0IMsMMV3UKg1Rt7JCGoGYMD/3SbnF8+DRgNiVgvW81NGGZU06xbi9JAhh7F/Ph70WOdEpZ6SRpsQOSeAN2x+BKMSC4ijhzGTt4LfKtWeDm1T6UbVP1h3vGHX2gMmnRvXxBERhC69uFGvvZ9IiNIGGK9XAZjfVVQUiVrfazGEt9xSxaldztrP3I0RUsdpgnI4kSk8SWZQaBbpj4B0TDxbRJ0t+5pCoMRgRRghLr6/BDwX/OJl9jWqdq+8UYyBqxTSQGrLEBe9q7oDiDQ6GaMI8pNTPmpXDoPm8vqFpbf45S3OY6zvsArF8TTOee3M9QmycbUbJz4xKmXHH/sYz bergey@wonderlust" ];
+  };
 
   services.dovecot2 = {
     enable = true;
