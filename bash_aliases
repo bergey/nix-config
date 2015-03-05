@@ -52,6 +52,8 @@ function cabal2nix-local {
     cat - > shell.nix <<EOF
 { pkgs ? import <nixpkgs> {}, haskellPackages ? pkgs.haskellngPackages }:
 
+with pkgs.haskell-ng.lib;
+
 let 
   hs = haskellPackages.override {
         overrides = self: super: rec {
