@@ -54,6 +54,7 @@
     gentium
     inconsolata
     libertine
+    gyre-fonts
     mph_2b_damase
     # unifont
     wqy_microhei
