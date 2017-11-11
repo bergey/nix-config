@@ -16,6 +16,13 @@ in with pkgs; buildEnv {
     notmuch
     stack
     vagrant
+    jq
+    mr
+    nix-repl
+    nox
+    rsync
+    sloccount
+    w3m
     unison
     ] ++ (if stdenv.isDarwin then [] else [
         gitAndTools.git-annex
