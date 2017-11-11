@@ -79,7 +79,6 @@ in emacsWithPackages (epkgs: (with epkgs; [
     pov-mode
     # powershell
     purescript-mode
-    python-mode
     qml-mode
     racket-mode
     rainbow-delimiters
@@ -107,4 +106,8 @@ in emacsWithPackages (epkgs: (with epkgs; [
     yaml-mode
     yasnippet
     
-  ]))
+  ]
+++ (if pkgs.stdenv.isDarwin then [] else [
+    python-mode
+])
+  ))
