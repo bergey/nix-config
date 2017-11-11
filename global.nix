@@ -24,8 +24,25 @@ in with pkgs; buildEnv {
     sloccount
     w3m
     unison
+    zathura
+    atool
+    aspell
+    bazaar
+    mercurial
+    darcs
+    subversion
+    git-lfs
+    cvs
+    curl
+    msmtp
+    nmap
     ] ++ (if stdenv.isDarwin then [] else [
         gitAndTools.git-annex
         crawl
+        feh
+        libreoffice
+        pass
+        gnupg
+        dmenu
     ]);
   }
