@@ -11,13 +11,14 @@ let
 in with pkgs; buildEnv {
   name = "bergey-env";
   paths= [
-    gitAndTools.git-annex
     gitAndTools.hub
     ripgrep
     notmuch
     stack
-    unison
     vagrant
-    crawl
-    ];
+    unison
+    ] ++ (if stdenv.isDarwin then [] else [
+        gitAndTools.git-annex
+        crawl
+    ]);
   }
