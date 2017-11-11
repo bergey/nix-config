@@ -1,7 +1,7 @@
 pkgs :
 {
   allowUnfree = true;
-  allowBroken = true;
+  # allowBroken = true;
   packageOverrides = self: with self; rec {
 
     haskellTools = spec: ([
