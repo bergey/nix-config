@@ -24,7 +24,6 @@ in with pkgs; buildEnv {
     sloccount
     w3m
     unison
-    zathura
     atool
     aspell
     bazaar
@@ -44,5 +43,6 @@ in with pkgs; buildEnv {
         pass
         gnupg
         dmenu
+        zathura
     ]);
   }
