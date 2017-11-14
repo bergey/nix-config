@@ -19,6 +19,7 @@ in with pkgs; buildEnv {
     jq
     mr
     nix-repl
+    nix-prefetch-git
     nox
     rsync
     sloccount
