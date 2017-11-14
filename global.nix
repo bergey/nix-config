@@ -35,12 +35,12 @@ in with pkgs; buildEnv {
     curl
     msmtp
     nmap
+    pass
     ] ++ (if stdenv.isDarwin then [] else [
         gitAndTools.git-annex
         crawl
         feh
         libreoffice
-        pass
         gnupg
         dmenu
         zathura
