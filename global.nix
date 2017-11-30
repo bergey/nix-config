@@ -2,8 +2,8 @@ let
   fetchNixpkgs = import ./fetchNixpkgs.nix;
 
   nixpkgs = fetchNixpkgs {
-     rev = "b8f7027360855faee9d72956092be2e030a12a5f";
-     sha256 = "15v02kjs38vjzq6nmf9p7rw3dfxbf5sbr7hgp835yr0r5j68ndym";
+     rev = "4cbbecc85dbc5a040f2e4111093d30337718996a";
+     sha256 = "0a6kz23f7zba31n46bqrrjcnb79pzyig4rlszz83ns76azx6zjc3";
   };
 
   pkgs = import nixpkgs { config = {}; };
@@ -36,13 +36,14 @@ in with pkgs; buildEnv {
     curl
     msmtp
     nmap
-    pass
+    haskellPackages.sizes
     ] ++ (if stdenv.isDarwin then [] else [
         gitAndTools.git-annex
         crawl
         feh
         libreoffice
-        gnupg
+        # pass
+        # gnupg
         dmenu
         zathura
     ]);
