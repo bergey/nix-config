@@ -46,126 +46,7 @@ pkgs :
       buildInputs = [ ghc.ghc784 haskellPackages_ghc784.cabalInstall ];
     };
 
-    vcsTools = self.buildEnv {
-        name = "vcsTools";
-        paths = [
-            subversion
-            git
-            bazaar
-            darcs
-            mercurial
-            gitAndTools.hub
-            mr
-        ];
-    };
-
-    graphicsTools = buildEnv {
-	name = "graphicsTools";
-	paths = [
-            inkscape
-            gimp_2_8
-            vlc
-        ];
-    };
-
-    officeTools = buildEnv {
-        name = "officeTools";
-        paths = [
-            calibre
-            libreoffice
-        ];
-    };
-
-    rToolsEnv = buildEnv {
-      name = "rTools";
-      paths = with rPackages; [
-        devtools
-        ggplot2
-        R
-      ];
-    };
-
-    photoTools = buildEnv {
-      name = "photoTools";
-      paths = [
-        gphoto2
-        darktable
-        gimp
-        imagemagick
-        perlPackages.ImageExifTool
-      ];
-    };
-
-    cadTools = buildEnv {
-      name = "cadTools";
-      paths = [
-        meshlab
-        slic3r
-        openscad
-      ];
-    };
-
-    webBrowsers = buildEnv {
-      name = "webBrowsers";
-      paths = [
-        # firefox-bin
-        chromium
-        elinks
-        # for comparison
-        # uzbl
-        # dwb
-        # netsurf
-      ];
-};
-
-      docTools = buildEnv {
-        name = "docTools";
-        paths = [
-          calibre
-          # libreoffice
-          haskellPackages.pandoc
-          haskellPackages.pandocCiteproc
-          # texLiveFull
-          zathura
-        ];
-      };
-
-      Pandoc = buildEnv {
-        name = "Pandoc";
-        paths = [
-          haskellPackages.pandoc
-          haskellPackages.pandocCiteproc
-        ];
-      };
-
-      avTools = buildEnv {
-        name = "avTools";
-        paths = [
-          abcde
-          id3v2
-          vlc
-        ];
-      };
-
-      vmTools = buildEnv {
-        name = "vmTools";
-        paths = [
-          vagrant
-          linuxPackages.virtualbox
-        ];
-      };
-
-      docutilsEnv = myEnvFun {
-          name = "docutils";
-          # ps1 = "[\\$NIX_MYENV_NAME] \\t \\# \\h \\\\\\$? $ ";
-          buildInputs = with python33Packages; [
-              haskellPackages.pandoc
-              ipython
-              docutils
-              pygments
-          ];
-      };
-      pythonEnv = myEnvFun {
+    pythonEnv = myEnvFun {
         name = "python";
         # ps1 = "[\\$NIX_MYENV_NAME] \\t \\# \\h \\\\\\$? $ ";
         buildInputs = with python33Packages; [
@@ -183,7 +64,7 @@ pkgs :
       };
 
       # jsEnv = myEnvFun {
-      jsTools = buildEnv {
+      jsEnv = myEnvFun {
         name = "jsTools";
         # buildInputs = [
         paths = [

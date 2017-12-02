@@ -15,13 +15,21 @@ in with pkgs; buildEnv {
     atool
     autojump
     bazaar
+    calibre
     curl
     cvs
     darcs
+    darktable
+    gimp
     git-lfs
     gitAndTools.hub
+    gphoto2
+    haskellPackages.pandoc
+    haskellPackages.pandocCiteproc
     haskellPackages.sizes
     htop
+    id3v2
+    inkscape
     inotifyTools
     isync # mbsync
     jq
@@ -35,6 +43,7 @@ in with pkgs; buildEnv {
     nmap
     notmuch
     nox
+    perlPackages.ImageExifTool
     ripgrep
     rsync
     sloccount
@@ -42,6 +51,7 @@ in with pkgs; buildEnv {
     subversion
     unison
     vagrant
+    vlc
     w3m
     wget
     ] ++ (if stdenv.isDarwin then [] else [
@@ -52,6 +62,7 @@ in with pkgs; buildEnv {
         feh
         gitAndTools.git-annex
         libreoffice
+        linuxPackages.virtualbox
         zathura
     ]);
   }
