@@ -11,47 +11,47 @@ let
 in with pkgs; buildEnv {
   name = "bergey-env";
   paths= [
-    ledger3
+    aspell
+    atool
+    autojump
+    bazaar
+    curl
+    cvs
+    darcs
+    git-lfs
     gitAndTools.hub
-    ripgrep
-    notmuch
-    stack
-    vagrant
-    jq
-    mr
+    haskellPackages.sizes
     htop
-    wget
-    nix-repl
+    inotifyTools
+    isync # mbsync
+    jq
+    ledger3
+    lrzip
+    mercurial
+    mr
+    msmtp
     nix-prefetch-git
+    nix-repl
+    nmap
+    notmuch
     nox
+    ripgrep
     rsync
     sloccount
-    w3m
-    isync # mbsync
-    unison
-    atool
-    aspell
-    bazaar
-    mercurial
-    darcs
+    stack
     subversion
-    git-lfs
-    cvs
-    curl
-    msmtp
-    nmap
-    haskellPackages.sizes
-    lrzip
-    inotifyTools
-    autojump
+    unison
+    vagrant
+    w3m
+    wget
     ] ++ (if stdenv.isDarwin then [] else [
-        gitAndTools.git-annex
-        crawl
-        feh
-        libreoffice
-        # pass
         # gnupg
+        # pass
+        crawl
         dmenu
+        feh
+        gitAndTools.git-annex
+        libreoffice
         zathura
     ]);
   }

@@ -12,9 +12,11 @@ emacsWithPackages = (pkgs.emacsPackagesNgGen myEmacs).emacsWithPackages;
 
 in emacsWithPackages (epkgs: (with epkgs; [
 
+    # merlin
+    # modelica-mode
+    # powershell
     # tuareg
     anaconda-mode
-    rg
     auto-complete
     avy
     bbdb
@@ -62,8 +64,6 @@ in emacsWithPackages (epkgs: (with epkgs; [
     magit
     magit-annex
     markdown-mode
-    # merlin
-    # modelica-mode
     move-text
     nix-mode
     nodejs-repl
@@ -77,13 +77,13 @@ in emacsWithPackages (epkgs: (with epkgs; [
     pocket-mode
     polymode
     pov-mode
-    # powershell
     purescript-mode
     qml-mode
     racket-mode
     rainbow-delimiters
     rainbow-mode
     real-auto-save
+    rg
     rust-mode
     s
     sbt-mode
