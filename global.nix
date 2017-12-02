@@ -11,6 +11,7 @@ let
 in with pkgs; buildEnv {
   name = "bergey-env";
   paths= [
+    ledger3
     gitAndTools.hub
     ripgrep
     notmuch
@@ -18,12 +19,15 @@ in with pkgs; buildEnv {
     vagrant
     jq
     mr
+    htop
+    wget
     nix-repl
     nix-prefetch-git
     nox
     rsync
     sloccount
     w3m
+    isync # mbsync
     unison
     atool
     aspell
@@ -37,6 +41,9 @@ in with pkgs; buildEnv {
     msmtp
     nmap
     haskellPackages.sizes
+    lrzip
+    inotifyTools
+    autojump
     ] ++ (if stdenv.isDarwin then [] else [
         gitAndTools.git-annex
         crawl
