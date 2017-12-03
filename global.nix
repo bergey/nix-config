@@ -25,7 +25,6 @@ in with pkgs; buildEnv {
     gitAndTools.hub
     gphoto2
     haskellPackages.pandoc
-    haskellPackages.pandocCiteproc
     haskellPackages.sizes
     htop
     id3v2
