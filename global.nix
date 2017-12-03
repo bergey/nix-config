@@ -15,11 +15,9 @@ in with pkgs; buildEnv {
     atool
     autojump
     bazaar
-    calibre
     curl
     cvs
     darcs
-    darktable
     gimp
     git-lfs
     gitAndTools.hub
@@ -29,7 +27,6 @@ in with pkgs; buildEnv {
     htop
     id3v2
     inkscape
-    inotifyTools
     isync # mbsync
     jq
     ledger3
@@ -50,18 +47,21 @@ in with pkgs; buildEnv {
     subversion
     unison
     vagrant
-    vlc
     w3m
     wget
     ] ++ (if stdenv.isDarwin then [] else [
         # gnupg
         # pass
+        calibre
         crawl
+        darktable
         dmenu
         feh
         gitAndTools.git-annex
+        inotifyTools
         libreoffice
         linuxPackages.virtualbox
+        vlc
         zathura
     ]);
   }
