@@ -12,6 +12,7 @@ in with pkgs; buildEnv {
   name = "bergey-env";
   paths= [
     aspell
+    aspellDicts.en
     atool
     autojump
     bazaar
