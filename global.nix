@@ -40,6 +40,7 @@ in with pkgs; buildEnv {
     nmap
     notmuch
     nox
+    pass
     perlPackages.ImageExifTool
     ripgrep
     rsync
@@ -50,9 +51,8 @@ in with pkgs; buildEnv {
     vagrant
     w3m
     wget
+    gnupg
     ] ++ (if stdenv.isDarwin then [] else [
-        # gnupg
-        # pass
         calibre
         crawl
         darktable
