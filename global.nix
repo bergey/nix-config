@@ -20,6 +20,7 @@ in with pkgs; buildEnv {
     cvs
     darcs
     gimp
+    git
     git-lfs
     gitAndTools.hub
     gphoto2
@@ -51,7 +52,7 @@ in with pkgs; buildEnv {
     vagrant
     w3m
     wget
-    gnupg
+    # gnupg
     ] ++ (if stdenv.isDarwin then [] else [
         calibre
         crawl
