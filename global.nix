@@ -2,8 +2,8 @@ let
   fetchNixpkgs = import ./fetchNixpkgs.nix;
 
   nixpkgs = fetchNixpkgs {
-     rev = "afe9649210cace6d3ee9046684d4ea27dc4fd15d";
-     sha256 = "1x8a3gx8c95fcjzr3d1x187xncmn8rzcqbh5gh331liw8zs53zmr";
+     rev = "1bc288591ea4fe3159b7630dcd2b57733d80a2ff";
+     sha256 = "1jq5xj4p63ady73flhml6ccnk4a61q5svncfmcgmvjn8afbbnzym";
   };
 
   pkgs = import nixpkgs { config = {}; };
