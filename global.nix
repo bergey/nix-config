@@ -19,6 +19,7 @@ in with pkgs; buildEnv {
     curl
     cvs
     darcs
+    editorconfig-core-c
     gimp
     git-lfs
     gitAndTools.hub

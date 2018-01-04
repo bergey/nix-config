@@ -31,6 +31,7 @@ in emacsWithPackages (epkgs: (with epkgs; [
     dash
     dockerfile-mode
     edit-indirect
+    editorconfig
     emmet-mode
     emms
     ensime
