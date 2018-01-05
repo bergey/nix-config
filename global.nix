@@ -19,6 +19,7 @@ in with pkgs; buildEnv {
     curl
     cvs
     darcs
+    firefox
     gimp
     git
     git-lfs
