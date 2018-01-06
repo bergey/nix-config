@@ -13,10 +13,10 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub.device = "/dev/sda";
 
   networking.hostName = "prandtl"; # Define your hostname.
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.networkmanager.enable = true; # NetworkManager, including nmcli & nmtui (no applet)
 
   # Select internationalisation properties.
    i18n = {
@@ -28,22 +28,16 @@
   # Set your time zone.
   time.timeZone = "UTC";
 
-  fileSystems."/home" =
-    { device = "/dev/prandtl/home";
-      fsType = "ext4";
-    };
-
-  virtualisation.xen = {
-    enable = true;
-    domain0MemorySize = 8192;
-  };
+#  virtualisation.xen = {
+#    enable = true;
+#    domain0MemorySize = 8192;
+#  };
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
    environment.systemPackages = with pkgs; [
      wget vim
      xlibs.xmodmap
-     haskellPackages.xmonad-contrib
      gnupg pinentry # see if this gets pinentry working
    ];
 
@@ -76,14 +70,18 @@
   # Enable touchpad support.
   services.xserver.libinput.enable = true;
 
-  services.xserver.windowManager.xmonad.enable = true;
+  services.xserver.windowManager.xmonad = {
+    enable = true;
+    enableContribAndExtras = true;
+  };
+
   services.xserver.desktopManager.xterm.enable = false;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.extraUsers.bergey = {
      isNormalUser = true;
      uid = 1000;
-     extraGroups = [ "wheel" ];
+     extraGroups = [ "wheel" "networkmanager" ];
    };
 
   fonts.fonts = with pkgs; [
