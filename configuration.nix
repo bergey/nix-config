@@ -38,7 +38,6 @@
    environment.systemPackages = with pkgs; [
      wget vim
      xlibs.xmodmap
-     gnupg pinentry # see if this gets pinentry working
    ];
 
   # Some programs need SUID wrappers, can be configured further or are
