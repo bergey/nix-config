@@ -19,7 +19,6 @@ in with pkgs; buildEnv {
     curl
     cvs
     darcs
-    firefox
     gimp
     git
     git-lfs
@@ -61,6 +60,7 @@ in with pkgs; buildEnv {
         darktable
         dmenu
         feh
+        firefox
         gitAndTools.git-annex
         inotifyTools
         libreoffice
