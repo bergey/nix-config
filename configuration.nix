@@ -38,6 +38,7 @@
    environment.systemPackages = with pkgs; [
      wget vim
      xlibs.xmodmap
+     pavucontrol
    ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -47,6 +48,7 @@
   programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
   programs.ssh.startAgent = false;
 
+  hardware.pulseaudio.enable = true;
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
