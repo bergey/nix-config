@@ -21,8 +21,10 @@ in with pkgs; buildEnv {
     darcs
     editorconfig-core-c
     gimp
+    git
     git-lfs
     gitAndTools.hub
+    gnupg
     gphoto2
     haskellPackages.pandoc
     haskellPackages.sizes
@@ -47,18 +49,19 @@ in with pkgs; buildEnv {
     rsync
     sloccount
     stack
+    stow
     subversion
     unison
     vagrant
     w3m
     wget
-    gnupg
     ] ++ (if stdenv.isDarwin then [] else [
         calibre
         crawl
         darktable
         dmenu
         feh
+        firefox
         gitAndTools.git-annex
         inotifyTools
         libreoffice
