@@ -60,9 +60,12 @@ in with pkgs; buildEnv {
         crawl
         darktable
         dmenu
+        docker
         feh
         firefox
+        freeciv_gtk
         gitAndTools.git-annex
+        google-cloud-sdk
         inotifyTools
         libreoffice
         linuxPackages.virtualbox
