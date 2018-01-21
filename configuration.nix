@@ -78,6 +78,11 @@
 
   services.xserver.desktopManager.xterm.enable = false;
 
+    fileSystems."/mnt/babel" =
+    { label = "Babel";
+      fsType = "exfat";
+    };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.extraUsers.bergey = {
      isNormalUser = true;
