@@ -16,6 +16,7 @@ in with pkgs; buildEnv {
     atool
     autojump
     bazaar
+    borgbackup
     curl
     cvs
     darcs
