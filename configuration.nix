@@ -32,6 +32,8 @@
 #    enable = true;
 #    domain0MemorySize = 8192;
 #  };
+virtualisation.docker.enable = true;
+
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
@@ -81,13 +83,14 @@
     fileSystems."/mnt/babel" =
     { label = "Babel";
       fsType = "exfat";
+      options = [ "uid=1000" ];
     };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.extraUsers.bergey = {
      isNormalUser = true;
      uid = 1000;
-     extraGroups = [ "wheel" "networkmanager" ];
+     extraGroups = [ "wheel" "networkmanager" "docker" ];
    };
 
   fonts.fonts = with pkgs; [
