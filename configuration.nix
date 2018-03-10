@@ -82,8 +82,8 @@ virtualisation.docker.enable = true;
 
     fileSystems."/mnt/babel" =
     { label = "Babel";
-      fsType = "exfat";
-      options = [ "uid=1000" ];
+      fsType = "ext4";
+      options = [ "relatime" "noauto" ];
     };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
