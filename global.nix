@@ -48,7 +48,6 @@ in with pkgs; buildEnv {
     perlPackages.ImageExifTool
     ripgrep
     rsync
-    sloccount
     stack
     stow
     subversion
@@ -70,6 +69,7 @@ in with pkgs; buildEnv {
         inotifyTools
         libreoffice
         linuxPackages.virtualbox
+        loc
         vlc
         zathura
     ]);
