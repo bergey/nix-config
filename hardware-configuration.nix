@@ -8,7 +8,7 @@
     [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
@@ -22,14 +22,19 @@
       fsType = "ext4";
     };
 
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/7A1C-4850";
+      fsType = "vfat";
+    };
+
   fileSystems."/home" =
     { device = "/dev/disk/by-uuid/8f792c1b-9973-401b-bbcc-73b22e2c6886";
       fsType = "ext4";
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/7A1C-4850";
-      fsType = "vfat";
+  fileSystems."/var/lib/docker" =
+    { device = "/dev/disk/by-uuid/2450e20f-603e-43dd-b710-6ecc59d42592";
+      fsType = "ext4";
     };
 
   swapDevices =
