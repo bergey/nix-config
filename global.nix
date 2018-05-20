@@ -19,7 +19,6 @@ in with pkgs; buildEnv {
     borgbackup
     curl
     cvs
-    darcs
     editorconfig-core-c
     gimp
     git
@@ -58,6 +57,7 @@ in with pkgs; buildEnv {
     ] ++ (if stdenv.isDarwin then [] else [
         calibre
         crawl
+        darcs
         darktable
         dmenu
         docker
