@@ -2,8 +2,8 @@ let
   fetchNixpkgs = import ./fetchNixpkgs.nix;
 
   nixpkgs = fetchNixpkgs {
-     rev = "6db7f92cc2af827e8b8b181bf5ed828a1d0f141d";
-     sha256 = "1wpnln6spcvqvrfqw49z83ky5v8gw951f818q5123l0qpywpmfsq";
+     rev = "be5e8faafc69195ef47e9cf6b92806cf427656e1";
+     sha256 = "0rvz7ac8bl2x9yrxrkzmgl3mwy4sjm0ngk44zfcfg81czgam7d6r";
   };
 
   pkgs = import nixpkgs { config = {}; };
@@ -16,16 +16,15 @@ in with pkgs; buildEnv {
     atool
     autojump
     bazaar
-    borgbackup
     curl
     cvs
     editorconfig-core-c
-    gimp
     git
     git-lfs
     gitAndTools.hub
     gnupg
     gphoto2
+    graphviz
     haskellPackages.pandoc
     haskellPackages.sizes
     htop
@@ -55,6 +54,7 @@ in with pkgs; buildEnv {
     w3m
     wget
     ] ++ (if stdenv.isDarwin then [] else [
+        borgbackup
         calibre
         crawl
         darcs
@@ -64,6 +64,7 @@ in with pkgs; buildEnv {
         feh
         firefox
         freeciv_gtk
+        gimp
         gitAndTools.git-annex
         google-cloud-sdk
         inotifyTools
