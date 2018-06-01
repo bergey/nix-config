@@ -53,7 +53,11 @@ in with pkgs; buildEnv {
     vagrant
     w3m
     wget
-    ] ++ (if stdenv.isDarwin then [] else [
+    ] ++ (if stdenv.isDarwin then [
+        ghc
+        cabal-install
+        nix
+    ] else [
         borgbackup
         calibre
         crawl
