@@ -6,6 +6,10 @@ alias n='nix-env'
 alias up='sudo nixos-rebuild switch --upgrade'
 alias ngc='sudo nix-collect-garbage --delete-older-than 7d'
 
+function nix-prefetch-pkgs {
+    nix-prefetch-url --unpack https://github.com/NixOS/nixpkgs/archive/$1.tar.gz
+}
+
 # install by local attribute
 function nia {
     nix-env -iA nixos.pkgs.$1
