@@ -16,6 +16,7 @@ in with pkgs; buildEnv {
     atool
     autojump
     bazaar
+    cabal2nix
     curl
     cvs
     editorconfig-core-c
@@ -40,6 +41,7 @@ in with pkgs; buildEnv {
     nix-prefetch-git
     nix-repl
     nmap
+    nodePackages.node2nix
     notmuch
     nox
     pass
