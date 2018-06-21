@@ -16,6 +16,7 @@ in with pkgs; buildEnv {
     atool
     autojump
     bazaar
+    bench
     cabal2nix
     curl
     cvs
