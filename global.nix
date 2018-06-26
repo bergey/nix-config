@@ -75,6 +75,7 @@ in buildEnv {
         dmenu
         docker
         feh
+        file
         firefox
         freeciv_gtk
         gimp
