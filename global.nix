@@ -27,6 +27,7 @@ in with pkgs; buildEnv {
     gnupg
     gphoto2
     graphviz
+    (haskell.lib.dontCheck haskellPackages.hasktags)
     haskellPackages.pandoc
     haskellPackages.sizes
     htop
@@ -49,7 +50,7 @@ in with pkgs; buildEnv {
     perlPackages.ImageExifTool
     ripgrep
     rsync
-    stack
+    # stack
     stow
     subversion
     unison
