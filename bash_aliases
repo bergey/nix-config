@@ -10,6 +10,10 @@ function nix-prefetch-pkgs {
     nix-prefetch-url --unpack https://github.com/NixOS/nixpkgs/archive/$1.tar.gz
 }
 
+function bootstrap {
+    nix-shell "$HOME/code/active/nix/bootstrap/$1.nix"
+}
+
 # install by local attribute
 function nia {
     nix-env -iA nixos.pkgs.$1

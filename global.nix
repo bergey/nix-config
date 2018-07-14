@@ -1,25 +1,35 @@
 let
   fetchNixpkgs = import ./fetchNixpkgs.nix;
 
-nixpkgs = fetchNixpkgs {
-     rev = "a8c71037e041725d40fbf2f3047347b6833b1703";
-     sha256 = "1z4cchcw7qgjhy0x6mnz7iqvpswc2nfjpdynxc54zpm66khfrjqw";
-  };
-
+nixpkgs = fetchNixpkgs (builtins.fromJSON (builtins.readFile ./nixpkgs-snapshot.json));
+        
   pkgs = import nixpkgs { config = {}; };
 
-in with pkgs; buildEnv {
+in with pkgs;
+let
+    python-dev-tools = python: with python.pkgs; buildEnv {
+        name = "python-dev-tools";
+        paths = [
+            flake8
+            ipython
+            python
+            pip
+            virtualenv
+        ];
+    };
+
+in buildEnv {
   name = "bergey-env";
   paths= [
     aspell
     aspellDicts.en
     atool
     autojump
-    bazaar
     bench
-    cabal2nix
+    coq_8_6
+    coqPackages_8_6.dpdgraph
+    coqPackages_8_6.coq-ext-lib
     curl
-    cvs
     editorconfig-core-c
     git
     git-lfs
@@ -37,7 +47,6 @@ in with pkgs; buildEnv {
     jq
     ledger3
     lrzip
-    mercurial
     mr
     msmtp
     nix-prefetch-git
@@ -52,20 +61,16 @@ in with pkgs; buildEnv {
     rsync
     # stack
     stow
-    subversion
     unison
     vagrant
     w3m
     wget
     ] ++ (if stdenv.isDarwin then [
-        ghc
-        cabal-install
         nix
     ] else [
         borgbackup
         calibre
         crawl
-        darcs
         darktable
         dmenu
         docker
