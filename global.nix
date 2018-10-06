@@ -47,17 +47,18 @@ in buildEnv {
     isync # mbsync
     jq
     ledger3
+    lftp
     lrzip
     mr
     msmtp
     nix-prefetch-git
-    nix-repl
     nmap
     nodePackages.node2nix
     notmuch
     nox
     pass
     perlPackages.ImageExifTool
+    pwgen
     ripgrep
     rsync
     # stack
@@ -66,6 +67,7 @@ in buildEnv {
     vagrant
     w3m
     wget
+    yaml2json
     ] ++ (if stdenv.isDarwin then [
         nix
     ] else [
