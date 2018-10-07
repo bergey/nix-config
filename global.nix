@@ -27,9 +27,9 @@ in buildEnv {
     autojump
     bench
     coq_8_6
-    coqPackages_8_6.dpdgraph
-    coqPackages_8_6.coq-ext-lib
-    ctags
+#    coqPackages_8_6.dpdgraph
+#    coqPackages_8_6.coq-ext-lib
+#    ctags
     curl
     editorconfig-core-c
     git
@@ -40,7 +40,7 @@ in buildEnv {
     graphviz
     (haskell.lib.dontCheck haskellPackages.hasktags)
     haskellPackages.pandoc
-    haskellPackages.sizes
+#    haskellPackages.sizes
     htop
     id3v2
     inkscape
