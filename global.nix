@@ -71,6 +71,7 @@ in buildEnv {
     ] ++ (if stdenv.isDarwin then [
         nix
     ] else [
+        acpi
         borgbackup
         calibre
         crawl
