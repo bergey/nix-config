@@ -11,5 +11,7 @@ in with pkgs; pkgs.stdenv.mkDerivation {
             cabal2nix
             cabal-install
             ghc
+            # (haskell.packages.ghc843.ghcWithPackages
+            #     (ps: [ ps.profunctors ]))
         ];
     }
