@@ -5,7 +5,7 @@ nixpkgs = fetchNixpkgs (builtins.fromJSON (builtins.readFile ../nixpkgs-snapshot
 
   pkgs = import nixpkgs { config = {}; };
 
-  python = pkgs.python35;
+  python = pkgs.python37;
 
 in with python.pkgs; pkgs.stdenv.mkDerivation {
         name = "bootstrap-python";
