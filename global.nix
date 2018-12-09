@@ -40,6 +40,8 @@ in buildEnv {
     graphviz
     (haskell.lib.dontCheck haskellPackages.hasktags)
     haskellPackages.pandoc
+    haskellPackages.hlint
+    # haskellPackages.HaRe
 #    haskellPackages.sizes
     htop
     id3v2
