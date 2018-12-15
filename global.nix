@@ -86,6 +86,7 @@ in buildEnv {
         freeciv_gtk
         gimp
         gitAndTools.git-annex
+        gnumake
         google-cloud-sdk
         inotifyTools
         libreoffice
