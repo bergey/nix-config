@@ -15,6 +15,7 @@ in with pkgs; mkEnv {
             cabal2nix
             cabal-install
             ghc
+            stack
             # (haskell.packages.ghc843.ghcWithPackages
             #     (ps: [ ps.profunctors ]))
         ];
