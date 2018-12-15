@@ -5,9 +5,13 @@ nixpkgs = fetchNixpkgs (builtins.fromJSON (builtins.readFile ../nixpkgs-snapshot
 
   pkgs = import nixpkgs { config = {}; };
 
-in with pkgs; pkgs.stdenv.mkDerivation {
+  mkEnv = env: if pkgs.lib.inNixShell
+        then pkgs.mkShell {name = env.name; buildInputs = env.paths;}
+        else pkgs.buildEnv env;
+
+in with pkgs; mkEnv {
         name = "bootstrap-haskell";
-        buildInputs = [
+        paths = [
             cabal2nix
             cabal-install
             ghc
