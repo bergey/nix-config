@@ -89,6 +89,7 @@ in buildEnv {
         gnumake
         google-cloud-sdk
         inotifyTools
+        kubectl
         libreoffice
         linuxPackages.virtualbox
         loc
