@@ -54,6 +54,7 @@ virtualisation.docker.enable = true;
   programs.ssh.startAgent = false;
 
   hardware.pulseaudio.enable = true;
+  hardware.u2f.enable = true;
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
