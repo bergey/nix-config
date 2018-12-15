@@ -11,7 +11,7 @@ function nix-prefetch-pkgs {
 }
 
 function bootstrap {
-    nix-shell "$HOME/code/active/nix/bootstrap/$1.nix"
+    nix-shell "$HOME/code/active/nix/bootstrap/$1.nix" --command "export PS1='[$1] \t \# \h $? $ '; return"
 }
 
 # install by local attribute
