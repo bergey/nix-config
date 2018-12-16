@@ -9,19 +9,8 @@ nixpkgs = fetchNixpkgs (builtins.fromJSON (builtins.readFile ./nixpkgs-snapshot.
     };
 
 in with pkgs;
-let
-    python-dev-tools = python: with python.pkgs; buildEnv {
-        name = "python-dev-tools";
-        paths = [
-            flake8
-            ipython
-            python
-            pip
-            virtualenv
-        ];
-    };
 
-in buildEnv {
+buildEnv {
   name = "bergey-env";
   paths= [
     aspell
@@ -87,7 +76,6 @@ cadaver
 dropbox-cli
         feh
         file
-        firefox
         freeciv_gtk
         gimp
         gitAndTools.git-annex
