@@ -74,7 +74,8 @@ in buildEnv {
         nix
     ] else [
         acpi
-        borgbackup
+    borgbackup
+cadaver
         calibre
         crawl
         darktable
