@@ -3,7 +3,10 @@ let
 
 nixpkgs = fetchNixpkgs (builtins.fromJSON (builtins.readFile ./nixpkgs-snapshot.json));
         
-  pkgs = import nixpkgs { config = {}; };
+    pkgs = import nixpkgs { config = {
+        allowUnfree = true;
+        };
+    };
 
 in with pkgs;
 let
@@ -80,7 +83,8 @@ cadaver
         crawl
         darktable
         dmenu
-        docker
+    docker
+dropbox-cli
         feh
         file
         firefox
