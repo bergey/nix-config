@@ -33,6 +33,7 @@ buildEnv {
     (haskell.lib.dontCheck haskellPackages.hasktags)
     haskellPackages.pandoc
     haskellPackages.hlint
+    haskellPackages.graphmod
     # haskellPackages.HaRe
 #    haskellPackages.sizes
     htop
