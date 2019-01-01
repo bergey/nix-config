@@ -81,6 +81,7 @@ dropbox-cli
         gitAndTools.git-annex
         gnumake
         google-cloud-sdk
+    (haskellPackages.callPackage ../../utility/Sieve {})
         inotifyTools
         kubectl
         libreoffice
