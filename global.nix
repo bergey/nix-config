@@ -49,6 +49,7 @@ buildEnv {
     nix-prefetch-git
     nmap
     nodePackages.node2nix
+    nodePackages.jsonlint
     notmuch
     nox
     pass
@@ -63,6 +64,7 @@ buildEnv {
     w3m
     wget
     yaml2json
+python.pkgs.yamllint
     ] ++ (if stdenv.isDarwin then [
         nix
     ] else [
