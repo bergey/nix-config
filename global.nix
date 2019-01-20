@@ -90,6 +90,7 @@ dropbox-cli
         libreoffice
         linuxPackages.virtualbox
         loc
+        slock
         vlc
         zathura
     ]);
