@@ -35,7 +35,7 @@ buildEnv {
     haskellPackages.hlint
     haskellPackages.graphmod
     # haskellPackages.HaRe
-    haskell.packages.ghc822.sizes # broken since semigroup-monoid
+    # haskell.packages.ghc822.sizes # broken since semigroup-monoid
     htop
     id3v2
     inkscape
