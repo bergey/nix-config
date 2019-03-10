@@ -16,35 +16,6 @@ pkgs :
         # threadscope # broken 2014-11-19
     ]));
 
-    ghcEnv = spec: myEnvFun {
-        name = spec.name;
-        buildInputs = haskellTools spec ++ myHaskellPackages spec;
-    };
-
-    ghcEnv_742 = ghcEnv {
-        name = "ghc742";
-        ghc = ghc.ghc742;
-        hsPkgs = haskellPackages_ghc742;
-    };
-
-    ghcEnv_763 = ghcEnv {
-        name = "ghc763";
-        ghc = ghc.ghc763;
-        hsPkgs = haskellPackages_ghc763;
-    };
-
-    ghcSpec_784 = {
-        name = "ghc784";
-        ghc = ghc.ghc784;
-        hsPkgs = haskellPackages_ghc784;
-    };
-
-    ghcEnv_784 = ghcEnv ghcSpec_784;
-
-    ghcEnvBare = myEnvFun {
-      name = "ghc78-bare";
-      buildInputs = [ ghc.ghc784 haskellPackages_ghc784.cabalInstall ];
-    };
 
     pythonEnv = myEnvFun {
         name = "python";
@@ -67,7 +38,7 @@ pkgs :
       jsEnv = myEnvFun {
         name = "jsTools";
         # buildInputs = [
-        paths = [
+        buildInputs = [
               # nodePackages.browserify
               nodePackages.jshint
               nodePackages.gulp
@@ -190,8 +161,6 @@ pkgs :
     myHoogleLocal = spec: spec.hsPkgs.hoogleLocal.override {
         packages = myHaskellPackages spec;
     };
-
-    hoogleLocal_784 = myHoogleLocal ghcSpec_784;
 
     };
 }
