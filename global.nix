@@ -16,13 +16,11 @@ buildEnv {
     aspell
     aspellDicts.en
     atool
-    autojump
     bench
 #    ctags
     curl
     editorconfig-core-c
     git
-    git-lfs
     gitAndTools.hub
     gnupg
     gphoto2
