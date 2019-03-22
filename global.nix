@@ -47,7 +47,6 @@ buildEnv {
     nmap
     nodePackages.jsonlint
     notmuch
-    nox
     pass
     perlPackages.ImageExifTool
     pwgen
