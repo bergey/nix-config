@@ -13,6 +13,7 @@ in with pkgs.nodePackages; mkEnv {
         name = "bootstrap-javascript";
         paths = [
             pkgs.nodejs
+            nodePackages.node2nix
             bower
             jsmin
         ];

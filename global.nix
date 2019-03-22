@@ -18,9 +18,6 @@ buildEnv {
     atool
     autojump
     bench
-    coq_8_6
-#    coqPackages_8_6.dpdgraph
-#    coqPackages_8_6.coq-ext-lib
 #    ctags
     curl
     editorconfig-core-c
@@ -48,7 +45,6 @@ buildEnv {
     msmtp
     nix-prefetch-git
     nmap
-    nodePackages.node2nix
     nodePackages.jsonlint
     notmuch
     nox
