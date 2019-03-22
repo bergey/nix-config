@@ -59,19 +59,19 @@ buildEnv {
     w3m
     wget
     yaml2json
-python.pkgs.yamllint
+    python.pkgs.yamllint
     ] ++ (if stdenv.isDarwin then [
         nix
     ] else [
         acpi
-    borgbackup
-cadaver
+        borgbackup
+        cadaver
         calibre
         crawl
         darktable
         dmenu
-    docker
-dropbox-cli
+        docker
+        dropbox-cli
         feh
         file
         freeciv_gtk
