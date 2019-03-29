@@ -1,3 +1,5 @@
+set -x
+
 # git diff-index --quiet HEAD -- || (echo "commit or stash changes"; exit 64)
 cd ~/code/nixpkgs-channels/
 git pull

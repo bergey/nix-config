@@ -13,7 +13,7 @@ bootstrap-envs:
 	done;
 
 update:
-	./update.sh
+	@./update.sh
 
 prune:
 	nix-env --delete-generations ${OLD}
