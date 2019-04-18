@@ -77,6 +77,7 @@ buildEnv {
     rsync
     # stack
     stow
+    textql
     unison
     vagrant
     w3m
