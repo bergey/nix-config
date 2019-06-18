@@ -1,8 +1,6 @@
 let
-  fetchNixpkgs = import ./fetchNixpkgs.nix;
-
-nixpkgs = fetchNixpkgs (builtins.fromJSON (builtins.readFile ./nixpkgs-snapshot.json));
-        
+   fetchNixpkgs = import ./fetchNixpkgs.nix;
+    nixpkgs = fetchNixpkgs (builtins.fromJSON (builtins.readFile ./nixpkgs-snapshot.json));
     pkgs = import nixpkgs { config = {
         allowUnfree = true;
         };
@@ -103,7 +101,7 @@ buildEnv {
         gitAndTools.git-annex
         gnumake
         google-cloud-sdk
-    (haskellPackages.callPackage ../../utility/Sieve {})
+        (haskellPackages.callPackage ../../utility/Sieve {})
         inotifyTools
         kubectl
         libreoffice
