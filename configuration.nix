@@ -100,6 +100,7 @@ virtualisation.docker.enable = true;
   fonts.fonts = with pkgs; [
     gentium
     inconsolata
+    tex-gyre
   ];
 
   # This value determines the NixOS release with which your system is to be
