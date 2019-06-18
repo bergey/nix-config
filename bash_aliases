@@ -14,6 +14,8 @@ function bootstrap {
     nix-shell "$HOME/code/active/nix/bootstrap/$1.nix" --command "export PS1='[$1] \t \# \h $? $ '; return"
 }
 
+alias nix-snapshot='cp ~/code/active/nix/nixpkgs-snapshot.json .'
+
 # install by local attribute
 function nia {
     nix-env -iA nixos.pkgs.$1
