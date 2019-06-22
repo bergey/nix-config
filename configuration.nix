@@ -43,7 +43,7 @@ virtualisation.docker.enable = true;
      cacert
      wget vim
      xlibs.xmodmap
-     pavucontrol
+     # pavucontrol
    ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -83,6 +83,7 @@ virtualisation.docker.enable = true;
   };
 
   services.xserver.desktopManager.xterm.enable = false;
+  services.xserver.displayManager.slim.enable = true;
 
     fileSystems."/mnt/babel" =
     { label = "Babel";
@@ -100,7 +101,7 @@ virtualisation.docker.enable = true;
   fonts.fonts = with pkgs; [
     gentium
     inconsolata
-    tex-gyre
+    # tex-gyre
   ];
 
   # This value determines the NixOS release with which your system is to be
