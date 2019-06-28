@@ -107,7 +107,6 @@ buildEnv {
         libreoffice
         linuxPackages.virtualbox
         loc
-        slock
         vlc
         zathura
     ]);
