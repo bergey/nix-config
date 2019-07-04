@@ -36,6 +36,7 @@ in with pkgs;
 buildEnv {
   name = "bergey-env";
   paths= [
+    alacritty
     aspell
     aspellDicts.en
     atool
