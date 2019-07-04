@@ -11,8 +11,8 @@ in with pkgs.nodePackages; mkEnv {
         name = "bootstrap-javascript";
         paths = [
             pkgs.nodejs
-            nodePackages.node2nix
+            node2nix
             bower
-            jsmin
+            pkgs.python3.pkgs.jsmin
         ];
     }
