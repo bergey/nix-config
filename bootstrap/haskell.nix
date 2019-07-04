@@ -12,10 +12,11 @@ in with pkgs; mkEnv {
         paths = [
             # cabal2nix
             cabal-install
-            ghc
+            # ghc
+            haskellPackages.shake
             # haskellPackages.alex
             # stack
-            # (haskell.packages.ghc843.ghcWithPackages
-            #     (ps: [ ps.profunctors ]))
+            (haskell.packages.ghc865.ghcWithPackages
+                (ps: [ ps.shake ]))
         ];
     }
