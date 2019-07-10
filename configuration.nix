@@ -98,7 +98,7 @@ virtualisation.docker.enable = true;
    users.extraUsers.bergey = {
      isNormalUser = true;
      uid = 1000;
-     extraGroups = [ "wheel" "networkmanager" "docker" ];
+     extraGroups = [ "wheel" "networkmanager" "docker" "dialout" ];
    };
 
   fonts.fonts = with pkgs; [
