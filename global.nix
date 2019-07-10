@@ -55,6 +55,7 @@ buildEnv {
     haskellPackages.graphmod
     # haskellPackages.HaRe
     (haskellPackages.callPackage sizes {})
+    haskellPackages.wai-app-static # warp
     htop
     id3v2
     inkscape
