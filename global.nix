@@ -1,6 +1,13 @@
 let
-   fetchNixpkgs = import ./fetchNixpkgs.nix;
-    nixpkgs = fetchNixpkgs (builtins.fromJSON (builtins.readFile ./nixpkgs-snapshot.json));
+  # after https://vaibhavsagar.com/blog/2018/05/27/quick-easy-nixpkgs-pinning/
+  # and https://github.com/obsidiansystems/obelisk/blob/91483bab786b41eb451e7443f38341124e61244a/dep/reflex-platform/default.nix
+    nixpkgs =
+        let snapshot = builtins.fromJSON (builtins.readFile ./nixpkgs-snapshot.json);
+        inherit (snapshot) owner repo rev;
+        in builtins.fetchTarball {
+            inherit (snapshot) sha256;
+            url = "https://github.com/${owner}/${repo}/archive/${rev}.tar.gz";
+            };
     pkgs = import nixpkgs { config = {
         allowUnfree = true;
         };
@@ -109,7 +116,10 @@ buildEnv {
         libreoffice
         linuxPackages.virtualbox
         loc
+        pavucontrol
+        spotify
         vlc
+        xscreensaver
         zathura
     ]);
   }
