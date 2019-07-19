@@ -98,27 +98,33 @@ buildEnv {
         borgbackup
         cadaver
         calibre
+        chromium
         crawl
         darktable
         dmenu
         docker
         dropbox-cli
+        electricsheep
         feh
         file
-        freeciv_gtk
+        # freeciv_gtk
         gimp
         gitAndTools.git-annex
         gnumake
         google-cloud-sdk
         (haskellPackages.callPackage ../../utility/Sieve {})
         inotifyTools
+        krita
         kubectl
         libreoffice
         linuxPackages.virtualbox
         loc
         pavucontrol
+        slack
         spotify
+        transmission
         vlc
+        xorg.xev
         xscreensaver
         zathura
     ]);
