@@ -104,7 +104,6 @@ buildEnv {
         dmenu
         docker
         dropbox-cli
-        electricsheep
         feh
         file
         # freeciv_gtk
