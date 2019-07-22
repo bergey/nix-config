@@ -6,7 +6,9 @@ let
             inherit (snapshot) sha256;
             url = "https://github.com/${owner}/${repo}/archive/${rev}.tar.gz";
             };
-    pkgs = import nixpkgs { config = {}; };
+    pkgs = import nixpkgs { config = {
+    allowBroken = true;
+}; };
 
     mkEnv = env: if pkgs.lib.inNixShell
         then pkgs.mkShell (env // {buildInputs = env.paths;})
@@ -15,7 +17,7 @@ let
 in with pkgs; mkEnv {
         name = "bootstrap-haskell";
         paths = [
-            # cabal2nix
+            cabal2nix
             cabal-install
             # ghc
             haskellPackages.shake
