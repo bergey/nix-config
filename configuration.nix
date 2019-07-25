@@ -54,7 +54,6 @@ virtualisation.docker.enable = true;
   # programs.mtr.enable = true;
   programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
   programs.ssh.startAgent = false;
-  programs.slock.enable = true;  # needs setuid
 
   hardware.pulseaudio.enable = true;
   hardware.u2f.enable = true;
