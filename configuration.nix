@@ -87,6 +87,9 @@ virtualisation.docker.enable = true;
   services.xserver.desktopManager.xterm.enable = false;
   services.xserver.displayManager.slim.enable = true;
 
+  hardware.opengl.enable = true;
+  hardware.opengl.extraPackages = with pkgs; [ vaapiIntel libvdpau-va-gl vaapiVdpau intel-ocl ];
+
     fileSystems."/mnt/babel" =
     { label = "Babel";
       fsType = "ext4";
