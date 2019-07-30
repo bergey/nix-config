@@ -10,7 +10,7 @@
 static const char * const logo_50_xpm[] = {
 "50 50 16 1",
 " 	c None    m None",
-"&	c #FF0000 m #FFFFFF",
+"&	c #A%1ABA m #FFFFFF",
 ",	c #FFFFFF m #FFFFFF",
 ".	c #000000 m #000000",
 "=	c #CCCCCC m #000000",

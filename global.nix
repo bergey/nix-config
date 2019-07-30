@@ -124,7 +124,9 @@ buildEnv {
         transmission
         vlc
         xorg.xev
-        xscreensaver
+        (xscreensaver.overrideAttrs (oldAttrs: {
+            patches = [ ./xscreensaver.xpm.patch ./teal.xpm.patch ];
+        }))
         zathura
     ]);
   }
