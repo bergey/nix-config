@@ -5,6 +5,9 @@
 { config, pkgs, ... }:
 
 {
+
+  nixpkgs.config.allowUnfree = true;
+
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -88,7 +91,7 @@ virtualisation.docker.enable = true;
   services.xserver.displayManager.slim.enable = true;
 
   hardware.opengl.enable = true;
-  hardware.opengl.extraPackages = with pkgs; [ vaapiIntel libvdpau-va-gl vaapiVdpau intel-ocl ];
+  hardware.opengl.extraPackages = with pkgs; [ vaapiIntel libvdpau-va-gl vaapiVdpau intel-ocl intel-media-driver beignet ];
 
     fileSystems."/mnt/babel" =
     { label = "Babel";
@@ -100,7 +103,7 @@ virtualisation.docker.enable = true;
    users.extraUsers.bergey = {
      isNormalUser = true;
      uid = 1000;
-     extraGroups = [ "wheel" "networkmanager" "docker" "dialout" ];
+     extraGroups = [ "audio" "wheel" "networkmanager" "docker" "dialout" ];
    };
 
   fonts.fonts = with pkgs; [
