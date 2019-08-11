@@ -93,11 +93,29 @@ virtualisation.docker.enable = true;
   hardware.opengl.enable = true;
   hardware.opengl.extraPackages = with pkgs; [ vaapiIntel libvdpau-va-gl vaapiVdpau intel-ocl intel-media-driver beignet ];
 
-    fileSystems."/mnt/babel" =
-    { label = "Babel";
+  # https://nixos.wiki/wiki/Dropbox
+  # https://discourse.nixos.org/t/using-dropbox-on-nixos/387/10
+  systemd.user.services.dropbox = {
+        enable = true;
+        description = "Dropbox";
+        serviceConfig = {
+            ExecStart = "${pkgs.dropbox-cli}/bin/dropbox start";
+            Type = "forking";
+            ExecReload = "${pkgs.coreutils.out}/bin/kill -HUP $MAINPID";
+            KillMode = "control-group"; # upstream recommends process
+            Restart = "on-failure";
+            PrivateTmp = true;
+            ProtectSystem = "full";
+            Nice = 10;
+        };
+        wantedBy = [ "graphical-session.target" ];
+  };
+
+  fileSystems."/mnt/babel" = {
+      label = "Babel";
       fsType = "ext4";
       options = [ "relatime" "noauto" ];
-    };
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.extraUsers.bergey = {
