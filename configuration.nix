@@ -93,6 +93,17 @@ virtualisation.docker.enable = true;
   hardware.opengl.enable = true;
   hardware.opengl.extraPackages = with pkgs; [ vaapiIntel libvdpau-va-gl vaapiVdpau intel-ocl intel-media-driver beignet ];
 
+  systemd.user.services.xscreensaver = {
+        enable = true;
+        description = "XScreensaver";
+        serviceConfig = {
+            PartOf = [ "graphical-session.target" ];
+            ExecStart = "${pkgs.xscreensaver}/bin/xscreensaver -no-splash";
+        };
+        wantedBy = [ "graphical-session.target" ];
+        after = [ "graphical-session-pre.target" ];
+  };
+
   # https://nixos.wiki/wiki/Dropbox
   # https://discourse.nixos.org/t/using-dropbox-on-nixos/387/10
   systemd.user.services.dropbox = {
