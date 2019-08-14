@@ -21,3 +21,8 @@ prune:
 		nix-env -p /nix/var/nix/profiles/per-user/bergey/bootstrap-$$env --delete-generations ${OLD}; \
 	done;
 	sudo nix-collect-garbage --delete-older-than ${OLD}
+
+roots:
+	for r in $$(nix-store --gc --print-roots | awk '$$1 ~ /^\/home\/bergey/ {print $$1;}'); do \
+    du -shc $$(nix-store -qR $$r 2>/dev/null) | awk -v r="$$r" '$$2 ~ /total/ {print $$1, r;}' ;  done \
+    | sort -h
