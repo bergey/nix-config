@@ -65,6 +65,7 @@ buildEnv {
     haskellPackages.wai-app-static # warp
     htop
     id3v2
+    imagemagick
     inkscape
     isync # mbsync
     jq
