@@ -9,6 +9,7 @@
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.initrd.kernelModules = [ "dm-snapshot" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
@@ -32,15 +33,10 @@
       fsType = "ext4";
     };
 
-  fileSystems."/var/lib/docker" =
-    { device = "/dev/disk/by-uuid/2450e20f-603e-43dd-b710-6ecc59d42592";
-      fsType = "ext4";
-    };
-
   swapDevices =
     [ { device = "/dev/disk/by-uuid/0ff888df-0158-4d98-817c-7de683b80428"; }
     ];
 
   nix.maxJobs = lib.mkDefault 4;
-  powerManagement.cpuFreqGovernor = "powersave";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 }
