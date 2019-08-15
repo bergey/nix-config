@@ -14,23 +14,23 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/f54b254a-5bb1-409a-86a4-62d31b84af2a";
-      fsType = "ext4";
+    { device = "zpool/def/root";
+      fsType = "zfs";
     };
 
   fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/210f0b43-9a9f-455f-a3d2-ff4c94ddce01";
-      fsType = "ext4";
+    { device = "zpool/def/nix";
+      fsType = "zfs";
+    };
+
+  fileSystems."/home" =
+    { device = "zpool/def/home";
+      fsType = "zfs";
     };
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/7A1C-4850";
       fsType = "vfat";
-    };
-
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/8f792c1b-9973-401b-bbcc-73b22e2c6886";
-      fsType = "ext4";
     };
 
   swapDevices =
