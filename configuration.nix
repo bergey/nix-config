@@ -109,6 +109,9 @@ virtualisation.docker.enable = true;
         after = [ "graphical-session-pre.target" ];
   };
 
+  services.keybase.enable = true;
+  services.kbfs.enable = true;
+
   # https://nixos.wiki/wiki/Dropbox
   # https://discourse.nixos.org/t/using-dropbox-on-nixos/387/10
   systemd.user.services.dropbox = {
