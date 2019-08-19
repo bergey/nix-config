@@ -4,6 +4,12 @@ OLD := 7d
 .PHONY: all global bootstrap-envs ${BOOTSTRAPS}
 all: global bootstrap-envs
 
+update:
+	@./update.sh
+
+os:
+	sudo nixos-rebuild switch --upgrade
+
 global:
 	nix-env -if global.nix
 
@@ -11,9 +17,6 @@ bootstrap-envs:
 	for env in $(shell ls bootstrap | sed 's/\.nix$$//'); do \
 		nix-env -p /nix/var/nix/profiles/per-user/bergey/bootstrap-$$env -if bootstrap/$$env.nix; \
 	done;
-
-update:
-	@./update.sh
 
 prune:
 	nix-env --delete-generations ${OLD}
