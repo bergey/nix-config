@@ -149,6 +149,21 @@ virtualisation.docker.enable = true;
     # tex-gyre
   ];
 
+      services.postgresql = {
+        enable = true;
+        package = pkgs.postgresql_10;
+        authentication = pkgs.lib.mkOverride 10 ''
+            local all all trust
+            host all all ::1/128 trust
+            '';
+        initialScript = pkgs.writeText "bergey-initScript" ''
+                      CREATE USER bergey;
+                      CREATE DATABASE bergey;
+                      GRANT ALL ON DATABASE bergey TO bergey;
+                      '';
+    };
+
+
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
