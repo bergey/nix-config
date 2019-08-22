@@ -104,7 +104,6 @@ buildEnv {
         darktable
         dmenu
         docker
-        dropbox-cli
         feh
         file
         # freeciv_gtk
