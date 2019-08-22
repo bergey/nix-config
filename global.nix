@@ -87,7 +87,7 @@ buildEnv {
     stow
     textql
     unison
-    vagrant
+    # vagrant
     w3m
     wget
     yaml2json
