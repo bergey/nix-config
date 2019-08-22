@@ -8,10 +8,22 @@ let
             inherit (snapshot) sha256;
             url = "https://github.com/${owner}/${repo}/archive/${rev}.tar.gz";
             };
-    pkgs = import nixpkgs { config = {
-        allowUnfree = true;
+    pkgs = import nixpkgs {
+        config = {
+            allowUnfree = true;
         };
+        overlays = [ (self: super: {
+          haskellPackages = super.haskellPackages.override {
+            overrides = (newH: oldH: rec {
+              # I haven't figured out what version of Servant these need
+              # keeping as an example of overlay
+              # cachix = self.haskell.lib.unmarkBroken oldH.cachix;
+              # cachix-api = self.haskell.lib.unmarkBroken oldH.cachix-api;
+            });
+          };
+        })];
     };
+
 
     sizes =
         ({ mkDerivation, base, bytestring, cmdargs, deepseq, dlist, lens
