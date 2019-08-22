@@ -146,6 +146,10 @@ virtualisation.docker.enable = true;
   fonts.fonts = with pkgs; [
     gentium
     inconsolata
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    # noto-fonts-extra # more weights?
     # tex-gyre
   ];
 
