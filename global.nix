@@ -64,6 +64,7 @@ buildEnv {
     curl
     editorconfig-core-c
     git
+    git-lfs
     gitAndTools.hub
     gnupg
     gphoto2
