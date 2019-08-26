@@ -131,6 +131,7 @@ buildEnv {
         libreoffice
         linuxPackages.virtualbox
         loc
+        mutt                    # I only use it to send mail from scripts
         pavucontrol
         slack
         spotify
