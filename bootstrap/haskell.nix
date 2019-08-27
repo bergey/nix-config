@@ -20,6 +20,7 @@ in with pkgs; mkEnv {
             cabal2nix
             cabal-install
             # ghc
+            haskellPackages.hpack
             haskellPackages.shake
             # haskellPackages.alex
             stack
