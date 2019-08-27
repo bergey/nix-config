@@ -9,7 +9,7 @@
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "sd_mod" "rtsx_pci_sdmmc" ];
-  boot.initrd.kernelModules = [ "dm-snapshot" ];
+  boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
@@ -34,7 +34,7 @@
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/0ff888df-0158-4d98-817c-7de683b80428"; }
+    [ { device = "/dev/disk/by-partuuid/8703bdfd-ed54-4712-859a-a620aba4ffd9"; }
     ];
 
   nix.maxJobs = lib.mkDefault 4;
