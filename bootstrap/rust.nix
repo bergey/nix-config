@@ -17,5 +17,6 @@ in with pkgs; mkEnv {
         paths = [
             cargo
             rustc
+            carnix
         ];
     }
