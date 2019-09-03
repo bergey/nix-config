@@ -4,8 +4,11 @@
 
 alias n='nix-env'
 alias up='sudo nixos-rebuild switch --upgrade'
-alias ngc='sudo nix-collect-garbage --delete-older-than 7d'
 alias nix-version='nix-instantiate --eval -E "(import <nixpkgs> {}).lib.version"'
+
+function ngc {
+    sudo nix-collect-garbage --delete-older-than $1
+}
 
 function nix-prefetch-pkgs {
     nix-prefetch-url --unpack https://github.com/NixOS/nixpkgs/archive/$1.tar.gz
