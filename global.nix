@@ -82,9 +82,11 @@ buildEnv {
     inkscape
     isync # mbsync
     jq
+    keybase
     ledger3
     lftp
     lrzip
+    maim # screenshots
     mr
     msmtp
     nix-prefetch-git
@@ -93,16 +95,19 @@ buildEnv {
     notmuch
     pass
     perlPackages.ImageExifTool
+    psmisc # pstree &c
     pwgen
     ripgrep
     rsync
     # stack
     stow
     textql
+    tmux
     unison
     # vagrant
     w3m
     wget
+    xlsfonts
     yaml2json
     python.pkgs.yamllint
     ] ++ (if stdenv.isDarwin then [
