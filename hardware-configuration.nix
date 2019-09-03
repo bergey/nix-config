@@ -33,8 +33,13 @@
       fsType = "vfat";
     };
 
+  fileSystems."/home/bergey/annex" =
+    { device = "zpool/crypt/annex";
+      fsType = "zfs";
+    };
+
   swapDevices =
-    [ { device = "/dev/disk/by-partuuid/8703bdfd-ed54-4712-859a-a620aba4ffd9"; }
+    [ { device = "/dev/disk/by-uuid/8006dab3-3e3c-4ceb-b325-b8ed98d72f66"; }
     ];
 
   nix.maxJobs = lib.mkDefault 4;
