@@ -8,9 +8,10 @@
 set -euxo pipefail
 
 # git diff-index --quiet HEAD -- || (echo "commit or stash changes"; exit 64)
-cd ~/code/nixpkgs-channels/
-git pull
-REV=$(git rev-parse HEAD)
+REV=$(curl -L https://nixos.org/channels/nixpkgs-unstable/git-revision)
+cd ~/code/nixpkgs
+git fetch -a
+git checkout ${REV}
 SHA=$(nix-prefetch-url --unpack https://github.com/NixOS/nixpkgs/archive/${REV}.tar.gz)
 cd -
 jq '{owner: "NixOS", repo: "nixpkgs", rev: $rev, sha256: $sha}' <<< '{}' \
