@@ -168,6 +168,14 @@ virtualisation.docker.enable = true;
                       '';
     };
 
+    # Enable cron service
+    services.cron = {
+        enable = true;
+        systemCronJobs = [
+        "0 4 * * *      root    zfs snapshot zpool/crypt/home@$(date -u '+%Y-%m-%dT%H.%M.%SZ')"
+        ];
+    };
+
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
