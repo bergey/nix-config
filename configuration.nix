@@ -81,20 +81,23 @@ virtualisation.docker.enable = true;
   # services.printing.enable = true;
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.layout = "dvorak";
-  # services.xserver.xkbOptions = "eurosign:e";
-
-  # Enable touchpad support.
-  services.xserver.libinput.enable = true;
-
-  services.xserver.windowManager.xmonad = {
+  services.xserver = {
     enable = true;
-    enableContribAndExtras = true;
+    layout = "dvorak";
+    exportConfiguration = true;
+
+    # Enable touchpad support.
+    libinput.enable = true;
+
+    windowManager.xmonad = {
+        enable = true;
+        enableContribAndExtras = true;
+    };
+
+    desktopManager.xterm.enable = false;
+    displayManager.slim.enable = true;
   };
 
-  services.xserver.desktopManager.xterm.enable = false;
-  services.xserver.displayManager.slim.enable = true;
 
   hardware.opengl.enable = true;
   hardware.opengl.extraPackages = with pkgs; [ vaapiIntel libvdpau-va-gl vaapiVdpau intel-ocl intel-media-driver beignet ];
