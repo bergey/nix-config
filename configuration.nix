@@ -98,9 +98,17 @@ virtualisation.docker.enable = true;
     displayManager.slim.enable = true;
   };
 
-
-  hardware.opengl.enable = true;
+ hardware.opengl.enable = true;
   hardware.opengl.extraPackages = with pkgs; [ vaapiIntel libvdpau-va-gl vaapiVdpau intel-ocl intel-media-driver beignet ];
+
+  services.udev.extraHwdb = ''
+        evdev:atkbd:dmi:*            # built-in keyboard: match all AT keyboards for now
+            KEYBOARD_KEY_3a=backspace     # bind capslock to backspace
+            KEYBOARD_KEY_38=leftctrl   # left alt to left control
+            KEYBOARD_KEY_1d=leftalt # left control to left alt
+            KEYBOARD_KEY_b8=rightctrl    # right alt to right control
+            KEYBOARD_KEY_9d=esc    # right control to escape
+        '';
 
   systemd.user.services.xscreensaver = {
         enable = true;
