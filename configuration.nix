@@ -105,8 +105,10 @@ virtualisation.docker.enable = true;
         evdev:atkbd:dmi:*            # built-in keyboard: match all AT keyboards for now
             KEYBOARD_KEY_3a=backspace     # bind capslock to backspace
             KEYBOARD_KEY_38=leftctrl   # left alt to left control
-            KEYBOARD_KEY_1d=leftalt # left control to left alt
+            KEYBOARD_KEY_db=leftalt # windows to left alt
+            KEYBOARD_KEY_1d=leftmeta # left control to left meta
             KEYBOARD_KEY_b8=rightctrl    # right alt to right control
+            KEYBOARD_KEY_b7=rightalt # print screen to right alt
             KEYBOARD_KEY_9d=esc    # right control to escape
         '';
 
