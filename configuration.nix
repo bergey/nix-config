@@ -57,6 +57,14 @@ virtualisation.docker.enable = true;
      # pavucontrol
    ];
 
+   programs.firejail = {
+    enable = true;
+    wrappedBinaries = let inherit (pkgs.lib) getBin; in {
+        firefox = "${getBin pkgs.firefox}/bin/firefox";
+        gimp = "${getBin pkgs.gimp}/bin/gimp";
+    };
+   };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs.bash.enableCompletion = true;
