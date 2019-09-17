@@ -23,7 +23,10 @@
   boot.extraModulePackages = [ config.boot.kernelPackages.exfat-nofuse ];
   boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.requestEncryptionCredentials = true;
-  services.zfs.autoScrub.enable = true;
+  services.zfs = {
+    autoScrub.enable = true;
+    autoSnapshot.enable = true;
+  };
   networking.hostId = "a9d1a9c2"; # required for ZFS
 
   networking.hostName = "prandtl"; # Define your hostname.
@@ -193,7 +196,6 @@ virtualisation.docker.enable = true;
     services.cron = {
         enable = true;
         systemCronJobs = [
-        "0 4 * * *      root    zfs snapshot zpool/crypt/home@$(date -u '+%Y-%m-%dT%H.%M.%SZ')"
         ];
     };
 
