@@ -3,7 +3,6 @@
 # I call this from .bashrc
 
 alias n='nix-env'
-alias up='sudo nixos-rebuild switch --upgrade'
 alias nix-version='nix-instantiate --eval -E "(import <nixpkgs> {}).lib.version"'
 
 function ngc {
