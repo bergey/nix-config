@@ -2,6 +2,8 @@
 # various conveniences for working with Nix
 # I call this from .bashrc
 
+export NIX_PATH="nixos=${HOME}/code/nixpkgs"
+
 alias n='nix-env'
 alias nix-version='nix-instantiate --eval -E "(import <nixpkgs> {}).lib.version"'
 
