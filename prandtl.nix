@@ -155,6 +155,8 @@ virtualisation.docker.enable = true;
         wantedBy = [ "graphical-session.target" ];
   };
 
+  services.transmission.enable = true;
+
   fileSystems."/mnt/babel" = {
       label = "Babel";
       fsType = "ext4";
