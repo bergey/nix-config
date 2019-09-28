@@ -56,12 +56,14 @@ buildEnv {
   name = "bergey-env";
   paths= [
     alacritty
+    arduino
     aspell
     aspellDicts.en
     atool
     bench
 #    ctags
     curl
+    direnv
     editorconfig-core-c
     git
     git-lfs
@@ -148,5 +150,6 @@ buildEnv {
             patches = [ ./xscreensaver.xpm.patch ./teal.xpm.patch ];
         }))
         zathura
+        zoom-us
     ]);
   }
