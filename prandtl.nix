@@ -25,7 +25,21 @@
   boot.zfs.requestEncryptionCredentials = true;
   services.zfs = {
     autoScrub.enable = true;
-    autoSnapshot.enable = true;
+  };
+  services.znapzend = {
+    enable = true;
+    zetup = {
+      "zpool/crypt/home" = {
+        plan = "1h=>15min,1d=>1h,7d=>1d,4w=>1w,1y=>1month";
+        timestampFormat = "%Y-%m-%d_%H:%M:%SZ";
+        recursive = true;
+        # destinations takes arbitrary names as attrs
+        destinations.external = {
+          dataset = "babel/prandtl/home";
+        };
+      };
+    };
+    pure = true;
   };
   networking.hostId = "a9d1a9c2"; # required for ZFS
 
