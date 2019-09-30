@@ -1,0 +1,27 @@
+From 95e2038ec9b3e0f04bcb34dd05c48b5d7c33d81a Mon Sep 17 00:00:00 2001
+From: Daniel Bergey <bergey@teallabs.org>
+Date: Mon, 30 Sep 2019 11:00:20 +0000
+Subject: [PATCH] zfs recv with -e
+
+copy snapshots, leave the active FS unchanged.  Unlike -F, this works
+with encrypted destinations.
+---
+ lib/ZnapZend/ZFS.pm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/ZnapZend/ZFS.pm b/lib/ZnapZend/ZFS.pm
+index cbb48e1..aff2988 100644
+--- a/lib/ZnapZend/ZFS.pm
++++ b/lib/ZnapZend/ZFS.pm
+@@ -310,7 +310,7 @@ sub sendRecvSnapshots {
+     my $mbuffer = shift;
+     my $mbufferSize = shift;
+     my $snapFilter = $_[0] || qr/.*/;
+-    my $recvOpt = $self->recvu ? '-uF' : '-F';
++    my $recvOpt = $self->recvu ? '-ue' : '-e';
+     my @sendOpt = $self->compressed ? qw(-Lce) : ();
+ 
+     my $remote;
+-- 
+2.23.0
+

@@ -21,6 +21,9 @@ let
                 # cachix-api = self.haskell.lib.unmarkBroken oldH.cachix-api;
                 });
             };
+            znapzend = super.znapzend.overrideAttrs (_: {
+                patches = [ ./0001-zfs-recv-with-e.patch ];
+            });
         })];
     };
 
@@ -150,6 +153,7 @@ buildEnv {
             patches = [ ./xscreensaver.xpm.patch ./teal.xpm.patch ];
         }))
         zathura
+        znapzend
         zoom-us
     ]);
   }
