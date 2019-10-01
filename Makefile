@@ -1,13 +1,19 @@
 BOOTSTRAPS := $(shell ls bootstrap)
 OLD := 7d
 
-.PHONY: all global bootstrap-envs ${BOOTSTRAPS}
-all: global bootstrap-envs
+.PHONY: all os os-update user global bootstrap-envs ${BOOTSTRAPS}
+all: user os
+
+user: global bootstrap-envs
 
 update:
 	@./update.sh
+	make user
 
 os:
+	sudo nixos-rebuild switch
+
+os-update:
 	sudo nixos-rebuild switch --upgrade
 
 global:
