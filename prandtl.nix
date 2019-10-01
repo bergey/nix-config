@@ -77,8 +77,16 @@ virtualisation.docker.enable = true;
    programs.firejail = {
     enable = true;
     wrappedBinaries = let inherit (pkgs.lib) getBin; in {
+        chromium = "${getBin pkgs.chromium}/bin/chromium";
+        darktable = "${getBin pkgs.darktable}/bin/darktable";
         firefox = "${getBin pkgs.firefox}/bin/firefox";
         gimp = "${getBin pkgs.gimp}/bin/gimp";
+        krita = "${getBin pkgs.krita}/bin/krita";
+        libreoffice = "${getBin pkgs.libreoffice}/bin/libreoffice";
+        # slack = "${getBin pkgs.slack}/bin/slack";
+        spotify = "${getBin pkgs.spotify}/bin/spotify";
+        vlc = "${getBin pkgs.vlc}/bin/vlc";
+        # zoom = "${getBin pkgs.zoom}/bin/zoom";
     };
    };
 

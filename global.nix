@@ -119,32 +119,25 @@ buildEnv {
         borgbackup
         cadaver
         calibre
-        chromium
         crawl
-        darktable
         dmenu
         docker
         dropbox-cli
         feh
         file
         # freeciv_gtk
-        gimp
         gitAndTools.git-annex
         gnumake
         google-cloud-sdk
         (haskellPackages.callPackage ../../utility/Sieve {})
         inotifyTools
-        krita
         kubectl
-        libreoffice
         linuxPackages.virtualbox
         loc
         mutt                    # I only use it to send mail from scripts
         pavucontrol
         slack
-        spotify
         transmission
-        vlc
         xorg.xev
         (xscreensaver.overrideAttrs (oldAttrs: {
             patches = [ ./xscreensaver.xpm.patch ./teal.xpm.patch ];
